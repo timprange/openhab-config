@@ -3,6 +3,7 @@ when
     Member of Heizung_Soll_Proxy changed
 then
     val heizungProxy = triggeringItem
+    logInfo("Heizung.rules","TriggeringItem: "+heizungProxy.name )
     val heizungString = heizungProxy.name.substringBefore("_Soll_Proxy")
     val heizung = Heizung_Soll.members.findFirst[h | h.name == heizungString+"_Soll"]
     val heizungMode = Heizung_Mode_General.members.findFirst[h | h.name == heizungString+"_Mode_General"]
@@ -32,6 +33,7 @@ when
     Member of Heizung_Soll changed
 then
     val heizung = triggeringItem
+    logInfo("Heizung.rules","TriggeringItem: "+heizung.name )
     val heizungProxy = Heizung_Soll_Proxy.members.findFirst[h | h.name == heizung.name+"_Proxy"]
     heizungProxy.postUpdate(heizung.state as Number)
 end
@@ -53,6 +55,7 @@ then
     else if(triggeringItem.getGroupNames.contains(Heizung_Mode.name)){
         heizungChanged.name.substringBefore("_Mode")
     }
+    logInfo("Heizung.rules","TriggeringItem: "+heizungChanged.name )
     val heizungIst = Heizung_Ist.members.findFirst[h | h.name == heizungString+"_Ist"]
     val heizungSoll = Heizung_Soll.members.findFirst[h | h.name == heizungString+"_Soll"]
     val heizungMode = Heizung_Mode.members.findFirst[h | h.name == heizungString+"_Mode"]
@@ -75,6 +78,7 @@ when
     Member of Heizung_Mode_General changed
 then
     val heizungModeGeneral = triggeringItem
+    logInfo("Heizung.rules","TriggeringItem: "+heizungModeGeneral.name )
     val heizungString  = heizungModeGeneral.name.substringBefore("_Mode_General")
     val heizungMode = Heizung_Mode.members.findFirst[h | h.name == heizungString+"_Mode"]
     heizungMode.sendCommand(heizungModeGeneral.state as Number)
@@ -85,8 +89,9 @@ when
     Member of Fenster changed
 then
     val fenster = triggeringItem
+    logInfo("Heizung.rules","TriggeringItem: "+fenster.name )
     val raumString = fenster.name.substringBefore("_Fenster")
-    val heizung = Heizung_Mode.members.findFirst[h | h.name == raumString+"_Heizung_Soll"]
+    val heizung = Heizung_Mode.members.findFirst[h | h.name == raumString+"_Heizung_Mode"]
 
     heizung.sendCommand(if(fenster.state == OPEN) 0 else 1)
 end
