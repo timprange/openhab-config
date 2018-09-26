@@ -1,0 +1,6 @@
+//Z-Wave
+//Waschmaschine
+Number Bad_Waschmaschine_Steckdose_Power "Waschmaschine" <washingmachine> (all) {channel="zwave:device:7d97f490:node6:meter_watts"}
+Number Bad_Waschmaschine_Status "Waschmaschine [MAP(waschmaschine_state.map):%s]" <washingmachine> (all)
+//Sven
+Switch Sven_Steckdose "Sven Schreibtisch" <poweroutlet> (all) [ "Switchable" ] {channel="hue:0010:0017882a3d69:6:switch"}

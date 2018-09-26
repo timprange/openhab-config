@@ -1,0 +1,30 @@
+
+val MODE_OFF = 0
+val MODE_STANDBY = 1
+val MODE_WAITING = 2
+val MODE_WASHING = 3
+val MODE_SLINGING = 4
+val MODE_FINISHED = 5
+
+var Lock_Finished = false
+
+rule "Washingmachine Consumption State Machine"
+when
+    Item Bad_Waschmaschine_Steckdose_Power changed
+then
+    if (Bad_Waschmaschine_Steckdose_Power.state < 1){
+        Bad_Waschmaschine_Status.postUpdate(MODE_OFF)
+        if(!Lock_Finished)
+        {
+            sendBroadcastNotification("Wäsche ist fertig!")
+            Lock_Finished = true;
+        }
+    } 
+    else if (Bad_Waschmaschine_Steckdose_Power.state < 10) {
+        Lock_Finished = false;
+        if (Bad_Waschmaschine_Status == MODE_SLINGING) Bad_Waschmaschine_Status.postUpdate(MODE_OFF)
+        else if(Bad_Waschmaschine_Status == MODE_OFF)  Bad_Waschmaschine_Status.postUpdate(MODE_WAITING)
+    }
+    else if (Bad_Waschmaschine_Steckdose_Power.state > 200 && Bad_Waschmaschine_Steckdose_Power.state < 1000) Bad_Waschmaschine_Status.postUpdate(MODE_SLINGING)
+	else if (Bad_Waschmaschine_Steckdose_Power.state > 10 && Bad_Waschmaschine_Status == MODE_WAITING) Bad_Waschmaschine_Status.postUpdate(MODE_WASHING)
+end

@@ -1,0 +1,92 @@
+rule "Heizung_Proxy_Changed"
+when
+    Member of Heizung_Soll_Proxy changed
+then
+    val heizungProxy = triggeringItem
+    val heizungString = heizungProxy.name.substringBefore("_Soll_Proxy")
+    val heizung = Heizung_Soll.members.findFirst[h | h.name == heizungString+"_Soll"]
+    val heizungMode = Heizung_Mode_General.members.findFirst[h | h.name == heizungString+"_Mode_General"]
+    if(heizungProxy.state as Number == 99){
+        heizungMode.sendCommand(0)
+    }
+    else{
+        heizung.sendCommand(heizungProxy.state as Number)
+    }
+end
+
+// rule "Heizung_Proxy_Mode_Changed"
+// when
+//     Member of Heizung_Mode changed from 0 to 1 or
+//     Member of Heizung_Mode changed from Off to On
+// then
+//     val heizungMode = triggeringItem
+//     val heizungString = heizungMode.name.substringBefore("_Mode")
+//     val heizungProxy = Heizung_Soll_Proxy.members.findFirst[h | h.name == heizungString+"_Soll_Proxy"]
+//     val heizungSoll = Heizung_Soll.members.findFirst[h | h.name == heizungString+"_Soll"]
+
+//     heizungProxy.postUpdate(heizungSoll.state as Number)
+// end
+
+rule "Heizung_Local_Changed"
+when
+    Member of Heizung_Soll changed
+then
+    val heizung = triggeringItem
+    val heizungProxy = Heizung_Soll_Proxy.members.findFirst[h | h.name == heizung.name+"_Proxy"]
+    heizungProxy.postUpdate(heizung.state as Number)
+end
+
+rule "Heizung_Disable_High_Temperature"
+when
+    Member of Heizung_Ist changed or
+    Member of Heizung_Soll changed
+then
+
+    val heizungChanged = triggeringItem
+    val heizungString  = 
+    if(triggeringItem.getGroupNames.contains(Heizung_Soll.name)){
+       heizungChanged.name.substringBefore("_Soll")
+    }
+    else if(triggeringItem.getGroupNames.contains(Heizung_Ist.name)){
+        heizungChanged.name.substringBefore("_Ist")
+    }
+    else if(triggeringItem.getGroupNames.contains(Heizung_Mode.name)){
+        heizungChanged.name.substringBefore("_Mode")
+    }
+    val heizungIst = Heizung_Ist.members.findFirst[h | h.name == heizungString+"_Ist"]
+    val heizungSoll = Heizung_Soll.members.findFirst[h | h.name == heizungString+"_Soll"]
+    val heizungMode = Heizung_Mode.members.findFirst[h | h.name == heizungString+"_Mode"]
+    val heizungModeGeneral = Heizung_Mode_General.members.findFirst[h | h.name == heizungString+"_Mode_General"]
+
+    if(heizungModeGeneral.state == 1 || heizungModeGeneral.state == "On")
+    {
+        if(heizungIst.state > (heizungSoll.state as Number)+1){
+            heizungMode.sendCommand(0)
+        }
+
+        if((heizungMode.state == 0 || heizungMode.state == "Off") && heizungIst.state < heizungSoll.state as Number){
+            heizungMode.sendCommand(1)
+        }
+    }
+end
+
+rule "Heizung_Mode_General_Changed"
+when
+    Member of Heizung_Mode_General changed
+then
+    val heizungModeGeneral = triggeringItem
+    val heizungString  = heizungModeGeneral.name.substringBefore("_Mode_General")
+    val heizungMode = Heizung_Mode.members.findFirst[h | h.name == heizungString+"_Mode"]
+    heizungMode.sendCommand(heizungModeGeneral.state as Number)
+end
+
+rule "Heizung_Mode_Fenster"
+when
+    Member of Fenster changed
+then
+    val fenster = triggeringItem
+    val raumString = fenster.name.substringBefore("_Fenster")
+    val heizung = Heizung_Mode.members.findFirst[h | h.name == raumString+"_Heizung_Soll"]
+
+    heizung.sendCommand(if(fenster.state == OPEN) 0 else 1)
+end

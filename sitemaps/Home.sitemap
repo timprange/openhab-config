@@ -1,0 +1,128 @@
+sitemap Home label="SmartHome-Zentrale"
+{
+    Frame label="Zimmer"
+    {
+        Text label="Wohnzimmer" icon=sofa
+        {
+            Frame label="Heizung"
+            {
+                Setpoint item=WZ_Heizung_Soll label="Raumtemperatur [%.1f °C]" step=0.5 minValue=8 maxValue=28 icon=heating_own
+		        Switch item=WZ_Heizung_Soll_Proxy label="Raumtemperatur" mappings=[8="8 °C", 18="18 °C", 21="21 °C", 99="AUS"] icon=heating_own visibility=[WZ_Heizung_Mode_General == 1]
+                Switch item=WZ_Heizung_Mode_General label="Raumtemperatur" mappings=[0="AUS", 1="EIN"] icon=heating_own visibility=[WZ_Heizung_Mode_General == 0]
+            }
+            Frame label="Umgebung"
+            {
+		        Text item=WZ_Multisensor_Temperatur icon=temperature {
+                    Switch item=WZ_Mutlisensor_Diagramm_Time label="Interval" mappings=[0="Stunde", 1="Tag", 2="Woche", 3="Monat"]
+			        Chart item=WZ_Multisensor_Temperatur period=h refresh=6000 visibility=[WZ_Mutlisensor_Diagramm_Time==0, WZ_Mutlisensor_Diagramm_Time=="Uninitialized"]
+			        Chart item=WZ_Multisensor_Temperatur period=d refresh=6000 visibility=[WZ_Mutlisensor_Diagramm_Time==1]
+                    Chart item=WZ_Multisensor_Temperatur period=w refresh=6000 visibility=[WZ_Mutlisensor_Diagramm_Time==2]
+			        Chart item=WZ_Multisensor_Temperatur period=m refresh=6000 visibility=[WZ_Mutlisensor_Diagramm_Time==3]
+		        }    
+		        Text item=WZ_Multisensor_Feuchtigkeit icon=humidity
+                {
+                    Switch item=WZ_Mutlisensor_Diagramm_Time label="Interval" mappings=[0="Stunde", 1="Tag", 2="Woche", 3="Monat"]
+			        Chart item=WZ_Multisensor_Feuchtigkeit period=h refresh=6000 visibility=[WZ_Mutlisensor_Diagramm_Time==0, WZ_Mutlisensor_Diagramm_Time=="Uninitialized"]
+			        Chart item=WZ_Multisensor_Feuchtigkeit period=d refresh=6000 visibility=[WZ_Mutlisensor_Diagramm_Time==1]
+                    Chart item=WZ_Multisensor_Feuchtigkeit period=w refresh=6000 visibility=[WZ_Mutlisensor_Diagramm_Time==2]
+			        Chart item=WZ_Multisensor_Feuchtigkeit period=m refresh=6000 visibility=[WZ_Mutlisensor_Diagramm_Time==3]
+		        }           
+		        Text item=WZ_Multisensor_Helligkeit icon=temperature
+                {
+                    Switch item=WZ_Mutlisensor_Diagramm_Time label="Interval" mappings=[0="Stunde", 1="Tag", 2="Woche", 3="Monat"]
+			        Chart item=WZ_Multisensor_Helligkeit period=h refresh=6000 visibility=[WZ_Mutlisensor_Diagramm_Time==0, WZ_Mutlisensor_Diagramm_Time=="Uninitialized"]
+			        Chart item=WZ_Multisensor_Helligkeit period=d refresh=6000 visibility=[WZ_Mutlisensor_Diagramm_Time==1]
+                    Chart item=WZ_Multisensor_Helligkeit period=w refresh=6000 visibility=[WZ_Mutlisensor_Diagramm_Time==2]
+			        Chart item=WZ_Multisensor_Helligkeit period=m refresh=6000 visibility=[WZ_Mutlisensor_Diagramm_Time==3]
+		        }      
+            }
+        }
+        Text label="Bad" icon=bath
+        {
+            Frame label="Heizung"
+            {
+                Text label="Aktuell [%.1f °C]" item=Bad_Heizung_Ist
+                Setpoint item=Bad_Heizung_Soll label="Raumtemperatur [%.1f °C]" step=0.5 minValue=8 maxValue=28 icon=heating_own
+		        Switch item=Bad_Heizung_Soll label="Raumtemperatur" mappings=[8="8 °C", 18="18 °C", 21="21 °C"] icon=heating_own
+            }
+             Frame
+            {
+                Text item=Bad_Waschmaschine_Status
+                Default item=Bad_Fenster label="Fenster"
+            }
+        }
+         Text label="Küche" icon=kitchen
+        {
+            Frame label="Heizung"
+            {
+                Text label="Aktuell [%.1f °C]" item=Kueche_Heizung_Ist
+                Setpoint item=Kueche_Heizung_Soll label="Raumtemperatur [%.1f °C]" step=0.5 minValue=8 maxValue=28 icon=heating_own
+		        Switch item=Kueche_Heizung_Soll label="Raumtemperatur" mappings=[8="8 °C", 18="18 °C", 21="21 °C"] icon=heating_own
+            }
+        }
+        Text label="Tim" icon=bedroom
+        {
+            Frame label="Umgebung"
+            {
+		        Text item=Tim_Multisensor_Temperatur icon=temperature {
+                    Switch item=Tim_Multisensor_Diagramm_Time label="Interval" mappings=[0="Stunde", 1="Tag", 2="Woche", 3="Monat"]
+			        Chart item=Tim_Multisensor_Temperatur period=h refresh=6000 visibility=[Tim_Multisensor_Diagramm_Time==0, Tim_Multisensor_Diagramm_Time=="Uninitialized"]
+			        Chart item=Tim_Multisensor_Temperatur period=d refresh=6000 visibility=[Tim_Multisensor_Diagramm_Time==1]
+                    Chart item=Tim_Multisensor_Temperatur period=w refresh=6000 visibility=[Tim_Multisensor_Diagramm_Time==2]
+			        Chart item=Tim_Multisensor_Temperatur period=m refresh=6000 visibility=[Tim_Multisensor_Diagramm_Time==3]
+		        }    
+		        Text item=Tim_Multisensor_Feuchtigkeit icon=humidity
+                {
+                    Switch item=Tim_Multisensor_Diagramm_Time label="Interval" mappings=[0="Stunde", 1="Tag", 2="Woche", 3="Monat"]
+			        Chart item=Tim_Multisensor_Feuchtigkeit period=h refresh=6000 visibility=[Tim_Multisensor_Diagramm_Time==0, Tim_Multisensor_Diagramm_Time=="Uninitialized"]
+			        Chart item=Tim_Multisensor_Feuchtigkeit period=d refresh=6000 visibility=[Tim_Multisensor_Diagramm_Time==1]
+                    Chart item=Tim_Multisensor_Feuchtigkeit period=w refresh=6000 visibility=[Tim_Multisensor_Diagramm_Time==2]
+			        Chart item=Tim_Multisensor_Feuchtigkeit period=m refresh=6000 visibility=[Tim_Multisensor_Diagramm_Time==3]
+		        }           
+		        Text item=Tim_Multisensor_Helligkeit icon=temperature
+                {
+                    Switch item=Tim_Multisensor_Diagramm_Time label="Interval" mappings=[0="Stunde", 1="Tag", 2="Woche", 3="Monat"]
+			        Chart item=Tim_Multisensor_Helligkeit period=h refresh=6000 visibility=[Tim_Multisensor_Diagramm_Time==0, Tim_Multisensor_Diagramm_Time=="Uninitialized"]
+			        Chart item=Tim_Multisensor_Helligkeit period=d refresh=6000 visibility=[Tim_Multisensor_Diagramm_Time==1]
+                    Chart item=Tim_Multisensor_Helligkeit period=w refresh=6000 visibility=[Tim_Multisensor_Diagramm_Time==2]
+			        Chart item=Tim_Multisensor_Helligkeit period=m refresh=6000 visibility=[Tim_Multisensor_Diagramm_Time==3]
+		        }      
+            }
+        }
+        Text label="Sven" icon=bedroom
+        {
+            Switch item=Sven_Steckdose
+        }
+    }
+    Frame label="Funktion"
+    {
+        Text label="Heizung [Durschnitt %.1f °C]" item=Heizung_Ist icon=heating_own
+        {
+            Frame
+            {
+                Switch item=Heizung_Sommer_Mode label=Sommermodus icon=radiator
+                Switch item=Heizung_Mode_General label=Heizung mappings=[1=EIN, 0=AUS, 15=BOOST] icon=radiator
+            }
+            Frame label="Wohnzimmer"
+            {
+                Text label="Aktuell [%.1f °C]" item=WZ_Heizung_Ist
+                Setpoint item=WZ_Heizung_Soll label="Raumtemperatur [%.1f °C]" step=0.5 minValue=8 maxValue=28 icon=heating_own
+		        Switch item=WZ_Heizung_Soll_Proxy label="Raumtemperatur" mappings=[8="8 °C", 18="18 °C", 21="21 °C", 99="AUS"] icon=heating_own visibility=[WZ_Heizung_Mode_General == 1]
+                Switch item=WZ_Heizung_Mode_General label="Raumtemperatur" mappings=[1="EIN", 0="AUS"] icon=heating_own visibility=[WZ_Heizung_Mode_General == 0]
+            }
+            Frame label="Bad"
+            {
+                Text label="Aktuell [%.1f °C]" item=Bad_Heizung_Ist
+                Setpoint item=Bad_Heizung_Soll label="Raumtemperatur [%.1f °C]" step=0.5 minValue=8 maxValue=28 icon=heating_own
+		        Switch item=Bad_Heizung_Soll label="Raumtemperatur" mappings=[8="8 °C", 18="18 °C", 21="21 °C"] icon=heating_own
+            }
+            Frame label="Küche"
+            {
+                Text label="Aktuell [%.1f °C]" item=Kueche_Heizung_Ist
+                Setpoint item=Kueche_Heizung_Soll label="Raumtemperatur [%.1f °C]" step=0.5 minValue=8 maxValue=28 icon=heating_own
+		        Switch item=Kueche_Heizung_Soll label="Raumtemperatur" mappings=[8="8 °C", 18="18 °C", 21="21 °C"] icon=heating_own
+            }
+        }
+        Group item=Fenster
+    }
+}

@@ -1,0 +1,13 @@
+Number WZ_Multisensor_Helligkeit "Helligkeit [%s LUX]" (all, rrd4j) {channel="zwave:device:7d97f490:node2:sensor_luminance"}
+Number WZ_Multisensor_Temperatur "Temperatur [%s °C]" (all, rrd4j) {channel="zwave:device:7d97f490:node2:sensor_temperature"}
+Number WZ_Multisensor_Feuchtigkeit "Feuchtigkeit [%s %%]" (all, rrd4j) {channel="zwave:device:7d97f490:node2:sensor_relhumidity"}
+
+Number WZ_Mutlisensor_Diagramm_Time <line>
+
+Number Tim_Multisensor_Helligkeit "Helligkeit [%s LUX]" (all, rrd4j) {channel="zwave:device:7d97f490:node13:sensor_luminance"}
+Number Tim_Multisensor_Temperatur "Temperatur [%s °C]" (all, rrd4j) {channel="zwave:device:7d97f490:node13:sensor_temperature"}
+Number Tim_Multisensor_Feuchtigkeit "Feuchtigkeit [%s %%]" (all, rrd4j) {channel="zwave:device:7d97f490:node13:sensor_relhumidity"}
+
+Number Tim_Multisensor_Diagramm_Time <line>
+
+Group Controll "Verwaltung" <settings>

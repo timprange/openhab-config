@@ -1,0 +1,5 @@
+Contact WZ_Fenster "Wohnzimmer Fenster [MAP(fenster.map):%s]" (Fenster, all) {channel="zwave:device:7d97f490:node7:sensor_door"}
+Contact Bad_Fenster "Bad Fenster [MAP(fenster.map):%s]" (Fenster, all) {channel="zwave:device:7d97f490:node12:sensor_door"}
+Contact Kueche_Fenster "Küche Fenster [MAP(fenster.map):%s]" (Fenster, all) {channel="zwave:device:7d97f490:node11:sensor_door"}
+
+Group:Contact:OR(OPEN,CLOSED) Fenster "Fenster [MAP(fenster.map):%s]" <window>
