@@ -91,7 +91,9 @@ sitemap Home label="SmartHome-Zentrale"
         }
         Text label="Sven" icon=bedroom
         {
-            Switch item=Sven_Steckdose
+            Switch item=Sven_Steckdose label="Schreibtisch"
+            Default item=Sven_Schreibtischlampe_Licht label="Schreibtischlampe"
+            Default item=Sven_Schreibtischlampe_Farbtemperatur label="Farbtemperatur" visibility=[Sven_Schreibtischlampe_Licht >0]
         }
     }
     Frame label="Funktion"

@@ -13,8 +13,3 @@ Number Tim_Multisensor_Batterie "Raumsensor Tim" <battery> (Batterie, all) {chan
 //Number WZ_Sauger_Batterie    "Staubsauger" <battery>   (Batterie, all) {channel="miio:vacuum:046C68ED:status#battery" }
 
 Group:Number:MIN Batterie "Batterieladung [Min. %s %%]" <battery> (all)
-
-Number Batterie_Zusammenfassung "Zusammenfassung"
-
-
-

@@ -1,0 +1,2 @@
+Dimmer Sven_Schreibtischlampe_Licht "Sven Schreibtischlampe" (all) {channel="hue:0220:0017882a3d69:7:brightness"}
+Dimmer Sven_Schreibtischlampe_Farbtemperatur "Sven Schreibtischlampe Farbtemperatur" (all) {channel="hue:0220:0017882a3d69:7:color_temperature"}
