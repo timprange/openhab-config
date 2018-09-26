@@ -123,6 +123,7 @@ sitemap Home label="SmartHome-Zentrale"
 		        Switch item=Kueche_Heizung_Soll label="Raumtemperatur" mappings=[8="8 °C", 18="18 °C", 21="21 °C"] icon=heating_own
             }
         }
-        Group item=Fenster
+        Group item=Contacts
+        Group item=Batterie
     }
 }

@@ -1,0 +1,20 @@
+//Thermostat
+Number WZ_Heizung_Batterie "Thermostat Wohnzimmer" <battery> (Batterie, all) {channel="zwave:device:7d97f490:node8:battery-level"}
+Number Bad_Heizung_Batterie "Thermostat Bad" <battery> (Batterie, all) {channel="zwave:device:7d97f490:node9:battery-level"} 
+Number Kueche_Heizung_Batterie "Thermostat Küche" <battery> (Batterie, all) {channel="zwave:device:7d97f490:node10:battery-level"} 
+//Schließkontakt
+Number WZ_Fenster_Batterie "Fenster Wohnzimmer" <battery> (Batterie, all) {channel="zwave:device:7d97f490:node7:battery-level"}
+Number Bad_Fenster_Batterie "Fenster Bad" <battery> (Batterie, all) {channel="zwave:device:7d97f490:node12:battery-level"}
+Number Kueche_Fenster_Batterie "Fenster Küche" <battery> (Batterie, all) {channel="zwave:device:7d97f490:node12:battery-level"}
+Number Flur_Tuer_Batterie "Wohnungstür" <battery> (Batterie) {channel="zwave:device:7d97f490:node14:battery-level"} 
+//Sensoren
+Number WZ_Multisensor_Batterie "Raumsensor Wohnzimmer" <battery> (Batterie, all) {channel="zwave:device:7d97f490:node2:battery-level"}
+Number Tim_Multisensor_Batterie "Raumsensor Tim" <battery> (Batterie, all) {channel="zwave:device:7d97f490:node13:battery-level"}
+//Number WZ_Sauger_Batterie    "Staubsauger" <battery>   (Batterie, all) {channel="miio:vacuum:046C68ED:status#battery" }
+
+Group:Number:MIN Batterie "Batterieladung [Min. %s %%]" <battery> (all)
+
+Number Batterie_Zusammenfassung "Zusammenfassung"
+
+
+
