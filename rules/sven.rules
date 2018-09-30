@@ -1,0 +1,7 @@
+rule "Sven Dash"
+when 
+    Channel "amazondashbutton:dashbutton:6896215f:press" triggered   
+then
+    Sven_Steckdose.sendCommand(if(Sven_Steckdose.getState==ON)
+    OFF else ON)
+end
