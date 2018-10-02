@@ -1,0 +1,52 @@
+Group  gVac     "Staubsauger"      <vacuum> (Wohnzimmer)
+Group  gVacStat "Statusdetails"           <status> (gVac)
+Group  gVacCons "Verbrauchsmaterial"        <line-increase> (gVac)
+Group  gVacDND  "Nicht stören Einstellungen"  <moon> (gVac)
+Group  gVacHist "Reinigungshistorie"         <calendar> (gVac)
+Group gVacLast  "Letzte Reinigung"          <calendar> (gVacHist)
+Group  gVacNetwork "Netzwerkdetails"       <network> (gVac)
+
+String actionControl  "Steuerung"    <vacuum> (gVac)     {channel="miio:vacuum:046C68ED:actions#control" }
+Number actionFan      "Saugleistung"         (gVac)   {channel="miio:vacuum:046C68ED:actions#fan" }
+String actionCommand  "Kommandos"          {channel="miio:vacuum:046C68ED:actions#commands" }
+
+Number statusBat    "Batterieladung [%1.0f%%]" <battery>   (gVac,gVacStat) {channel="miio:vacuum:046C68ED:status#battery" }
+Number statusArea    "Gereinigte Fläche [%1.0f m²]" <zoom>   (gVac,gVacStat) {channel="miio:vacuum:046C68ED:status#clean_area" }
+Number statusTime    "Reinigungszeit [%1.0f min]" <clock>   (gVac,gVacStat) {channel="miio:vacuum:046C68ED:status#clean_time" }
+String  statusError    "Fehler [%s]"  <error>  (gVac,gVacStat) {channel="miio:vacuum:046C68ED:status#error_code" }
+Number statusFanPow    "Saugleistung [%1.0f %%]"  <signal>   (gVacStat) {channel="miio:vacuum:046C68ED:status#fan_power" } 
+Number statusClean    "Reinigungsstatus [%1.0f]"   <switch>  (gVacStat) {channel="miio:vacuum:046C68ED:status#in_cleaning" }
+Switch statusDND    "Nicht stören aktiviert"    (gVacStat) {channel="miio:vacuum:046C68ED:status#dnd_enabled" }
+String statusStatus    "Status [%s]"  <status>  (gVacStat) {channel="miio:vacuum:046C68ED:status#state"} 
+
+Number consumableMainT    "Hauptbürste [%1.0f h]"    (gVacCons) {channel="miio:vacuum:046C68ED:consumables#main_brush_time"}
+Number consumableMainP    "Hauptbürste [%1.0f%%]"    (gVacCons) {channel="miio:vacuum:046C68ED:consumables#main_brush_percent"}
+Number consumableSideT    "Seitenbürste [%1.0f h]"    (gVacCons) {channel="miio:vacuum:046C68ED:consumables#side_brush_time"}
+Number consumableSideP    "Seitenbürste [%1.0f%%]"    (gVacCons) {channel="miio:vacuum:046C68ED:consumables#side_brush_percent"}
+Number consumableFilterT    "Filter [%1.0f h]"    (gVacCons) {channel="miio:vacuum:046C68ED:consumables#filter_time" }
+Number consumableFilterP    "Filter [%1.0f%%]"    (gVacCons) {channel="miio:vacuum:046C68ED:consumables#filter_percent" }
+Number consumableSensorT    "Sensor [%1.0f h]"    (gVacCons) {channel="miio:vacuum:046C68ED:consumables#sensor_dirt_time"}
+Number consumableSensorP    "Sensor [%1.0f%%]"    (gVacCons) {channel="miio:vacuum:046C68ED:consumables#sensor_dirt_percent"}
+
+
+Switch dndFunction   "Nicht stören aktivieren" <moon>   (gVacDND) {channel="miio:vacuum:046C68ED:dnd#dnd_function"}
+String dndStart   "Nicht stören Startzeit [%s]" <clock>   (gVacDND) {channel="miio:vacuum:046C68ED:dnd#dnd_start"}
+String dndEnd   "Nicht stören Endzeit [%s]"   <clock-on>  (gVacDND) {channel="miio:vacuum:046C68ED:dnd#dnd_end"}
+
+Number historyArea    "Gesamtreinigungsfläche [%1.0f m²]" <zoom>    (gVacHist) {channel="miio:vacuum:046C68ED:history#total_clean_area"}
+Number historyTime    "Gesamtreinigungszeit [%1.0f min]"   <clock>     (gVacHist) {channel="miio:vacuum:046C68ED:history#total_clean_time"}
+Number historyCount    "Anzahl Reinigungen [%1.0f]"  <office>  (gVacHist) {channel="miio:vacuum:046C68ED:history#total_clean_count"}
+
+Number lastStart "Startzeit [%s]" <clock> (gVacLast) {channel="miio:vacuum:046C68ED:cleaning#last_clean_start_time"} 
+Number lastEnd "Endzeit [%s]" <clock> (gVacLast) {channel="miio:vacuum:046C68ED:cleaning#last_clean_end_time"}
+Number lastArea "Gereinigte Fläche [%1.0f m²]" <zoom> (gVacLast) {channel="miio:vacuum:046C68ED:cleaning#last_clean_area"}
+Number lastDuration "Reinigungszeit [%1.0f min]" <clock> (gVacLast) {channel="miio:vacuum:046C68ED:cleaning#last_clean_duration"}
+Number lastError "Fehler [%s]" <error> (gVacLast) {channel="miio:vacuum:046C68ED:cleaning#last_clean_error"}
+
+
+String  miNetSSID    "Network SSID [%s]"  <network>  (gVac,gVacNetwork) {channel="miio:vacuum:046C68ED:network#ssid" }
+String  miNetBSSID    "Network BSSID [%s]"  <network>  (gVac,gVacNetwork) {channel="miio:vacuum:046C68ED:network#bssid" }
+Number  miNetRSSI    "Network RSSI [%1.0f]"  <network>  (gVac,gVacNetwork) {channel="miio:vacuum:046C68ED:network#rssi" }
+Number  miNetLife    "Uptime [%1.0f]"  <clock>  (gVac,gVacNetwork) {channel="miio:vacuum:046C68ED:network#life" }
+
+Switch Vaccuum_Alexa "Staubsauger" ["Switchable"] {channel="miio:vacuum:046C68ED:actions#vacuum"}

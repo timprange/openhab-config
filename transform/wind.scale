@@ -1,0 +1,17 @@
+[0..11.25[ = N - Nord
+[11.25..33.75[ = NNE - NordNordOst
+[33.75..56.25[ = NE - NordOst
+[56.25..78.75[ = ENE - OstNordOst
+[78.75..101.25[ = E - Ost
+[101.25..123.75[ = ESE - OstSüdOst
+[123.75..146.25[ = SE - SüdOst
+[146.25..168.75[ = SSE - SüdSüdOst
+[168.75..191.25[ = S - Süd
+[191.25..213.75[ = SSW - SüdSüdWest
+[213.75..236.25[ = SW - SüdWest
+[236.25..258.75[ = WSW - WestSüdWest
+[258.75..281.25[ = W - West
+[281.25..303.75[ = WNW - WestNordWest
+[303.75..326.25[ = NW - NordWest
+[326.25..348.75[ = NNW - NordNordWest
+[348.75..360] = N - Nord

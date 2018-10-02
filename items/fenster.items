@@ -1,9 +1,9 @@
-Contact WZ_Fenster "Wohnzimmer Fenster [MAP(fenster.map):%s]" (Fenster,Contacts, all) {channel="zwave:device:7d97f490:node7:sensor_door"}
-Contact Bad_Fenster "Bad Fenster [MAP(fenster.map):%s]" (Fenster,Contacts, all) {channel="zwave:device:7d97f490:node12:sensor_door"}
-Contact Kueche_Fenster "Küche Fenster [MAP(fenster.map):%s]" (Fenster,Contacts, all) {channel="zwave:device:7d97f490:node11:sensor_door"}
-Contact Flur_Tuer "Eingangstür [MAP(fenster.map):%s]" <frontdoor> (Tueren,Contacts, all) {channel="zwave:device:7d97f490:node14:sensor_door"} 
+Contact WZ_Fenster "Wohnzimmer Fenster [MAP(fenster.map):%s]" (Fenster, Wohnzimmer) {channel="zwave:device:7d97f490:node7:sensor_door"}
+Contact Bad_Fenster "Bad Fenster [MAP(fenster.map):%s]" (Fenster, Bad) {channel="zwave:device:7d97f490:node12:sensor_door"}
+Contact Kueche_Fenster "Küche Fenster [MAP(fenster.map):%s]" (Fenster, Kueche) {channel="zwave:device:7d97f490:node11:sensor_door"}
+Contact Flur_Tuer "Eingangstür [MAP(fenster.map):%s]" <frontdoor> (Tueren, Flur) {channel="zwave:device:7d97f490:node14:sensor_door"} 
 
-Group:Contact:OR(OPEN,CLOSED) Fenster "Fenster [MAP(fenster.map):%s]" <window>
-Group:Contact:OR(OPEN,CLOSED) Tueren "Türen [MAP(fenster.map):%s]" <door>
+Group:Contact:OR(OPEN,CLOSED) Fenster "Fenster [MAP(fenster.map):%s]" <window> (Contacts)
+Group:Contact:OR(OPEN,CLOSED) Tueren "Türen [MAP(fenster.map):%s]" <door> (Contacts)
 
-Group:Contact:OR(OPEN,CLOSED) Contacts "Türen/Fenster [MAP(fenster.map):%s]" <window>
+Group:Contact:OR(OPEN,CLOSED) Contacts "Türen/Fenster [MAP(fenster.map):%s]" <window> (all)

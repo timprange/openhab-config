@@ -1,26 +1,24 @@
 //WZ
-Group gWZ_Heizung "Heizung" ["Thermostat"]
-Number WZ_Heizung_Soll "WZ Soll" <heating> (Heizung_Soll, gWZ_Heizung, all) [ "TargetTemperature" ]  {channel="zwave:device:7d97f490:node8:thermostat_setpoint_heating"}
-Number WZ_Heizung_Soll_Proxy "Heizung" <heating> (Heizung_Soll_Proxy, all)
-Number WZ_Heizung_Ist "WZ Ist" <temperature> (Heizung_Ist, gWZ_Heizung, all) [ "CurrentTemperature" ]  {channel="zwave:device:7d97f490:node8:sensor_temperature"}
-Number WZ_Heizung_Mode "Heizung" (Heizung_Mode, all) {channel="zwave:device:7d97f490:node8:thermostat_mode"}
-Number WZ_Heizung_Mode_General "Heizung" (Heizung_Mode_General, all)
+Group gWZ_Heizung "Heizung Wohnzimmer" (Heizungen, Wohnzimmer) ["Thermostat"]
+Number WZ_Heizung_Soll "Heizung Wohnzimmer Soll" <heating> (Heizung_Soll, gWZ_Heizung) [ "TargetTemperature" ]  {channel="zwave:device:7d97f490:node8:thermostat_setpoint_heating"}
+Number WZ_Heizung_Soll_Proxy "Heizung Wohnzimmer Soll Proxy" <heating> (Heizung_Soll_Proxy, gWZ_Heizung)
+Number WZ_Heizung_Ist "Heizung Wohnzimmer Ist" <temperature> (Heizung_Ist, gWZ_Heizung) [ "CurrentTemperature" ]  {channel="zwave:device:7d97f490:node8:sensor_temperature"}
+Number WZ_Heizung_Mode "Heizung Wohnzimmer Modus" (Heizung_Mode, gWZ_Heizung) {channel="zwave:device:7d97f490:node8:thermostat_mode"}
+Number WZ_Heizung_Mode_General "Heizung Wohnzimmer Mode General" (Heizung_Mode_General, gWZ_Heizung)
 //Bad
-Group gBad_Heizung "Heizung" ["Thermostat"]
-Number Bad_Heizung_Soll "Heizung" <heating> (Heizung_Soll, gBad_Heizung, all) [ "TargetTemperature" ]  {channel="zwave:device:7d97f490:node9:thermostat_setpoint_heating"}
-Number Bad_Heizung_Soll_Proxy "Heizung" <heating> (Heizung_Soll_Proxy, all)
-Number Bad_Heizung_Ist "Heizung" <temperature> (Heizung_Ist, gBad_Heizung, all) [ "CurrentTemperature" ]  {channel="zwave:device:7d97f490:node9:sensor_temperature"}
-Number Bad_Heizung_Mode "Heizung" (Heizung_Mode, all) {channel="zwave:device:7d97f490:node9:thermostat_mode"}
-Number Bad_Heizung_Mode_General "Heizung" (Heizung_Mode_General, all)
+Group gBad_Heizung "Heizung Bad" (Heizungen, Bad) ["Thermostat"]
+Number Bad_Heizung_Soll "Heizung Bad Soll" <heating> (Heizung_Soll, gBad_Heizung) [ "TargetTemperature" ]  {channel="zwave:device:7d97f490:node9:thermostat_setpoint_heating"}
+Number Bad_Heizung_Soll_Proxy "Heizung Bad Soll Proxy" <heating> (Heizung_Soll_Proxy, gBad_Heizung)
+Number Bad_Heizung_Ist "Heizung Bad Ist" <temperature> (Heizung_Ist, gBad_Heizung) [ "CurrentTemperature" ]  {channel="zwave:device:7d97f490:node9:sensor_temperature"}
+Number Bad_Heizung_Mode "Heizung Bad Modus" (Heizung_Mode, gBad_Heizung) {channel="zwave:device:7d97f490:node9:thermostat_mode"}
+Number Bad_Heizung_Mode_General "Heizung Bad General" (Heizung_Mode_General, gBad_Heizung)
 //Küche
-Group gKueche_Heizung "Heizung" ["Thermostat"]
-Number Kueche_Heizung_Soll "Heizung" <heating> (Heizung_Soll, gKueche_Heizung, all) [ "TargetTemperature" ]  {channel="zwave:device:7d97f490:node10:thermostat_setpoint_heating"}
-Number Kueche_Heizung_Soll_Proxy "Heizung" <heating> (Heizung_Soll_Proxy, all)
-Number Kueche_Heizung_Ist "Heizung" <temperature> (Heizung_Ist, gKueche_Heizung, all) [ "CurrentTemperature" ]  {channel="zwave:device:7d97f490:node10:sensor_temperature"}
-Number Kueche_Heizung_Mode "Heizung" (Heizung_Mode, all) {channel="zwave:device:7d97f490:node10:thermostat_mode"}
-Number Kueche_Heizung_Mode_General "Heizung" (Heizung_Mode_General, all)
-
-Switch Heizung_Sommer_Mode (Controll)
+Group gKueche_Heizung "Heizung Küche" (Heizungen, Kueche) ["Thermostat"]
+Number Kueche_Heizung_Soll "Heizung Küche Soll" <heating> (Heizung_Soll, gKueche_Heizung) [ "TargetTemperature" ]  {channel="zwave:device:7d97f490:node10:thermostat_setpoint_heating"}
+Number Kueche_Heizung_Soll_Proxy "Heizung Küche Soll Proxy" <heating> (Heizung_Soll_Proxy, gKueche_Heizung)
+Number Kueche_Heizung_Ist "Heizung Küche Ist" <temperature> (Heizung_Ist, gKueche_Heizung) [ "CurrentTemperature" ]  {channel="zwave:device:7d97f490:node10:sensor_temperature"}
+Number Kueche_Heizung_Mode "Heizung Küche Mode" (Heizung_Mode, gKueche_Heizung) {channel="zwave:device:7d97f490:node10:thermostat_mode"}
+Number Kueche_Heizung_Mode_General "Heizung Küche Mode General" (Heizung_Mode_General, gKueche_Heizung)
 
 Group:Number:AVG Heizung_Soll
 Group:Number:AVG Heizung_Ist
@@ -28,3 +26,5 @@ Group:Number:AVG Heizung_Soll_Proxy
 
 Group Heizung_Mode
 Group Heizung_Mode_General
+
+Group Heizungen "Heizungen" (all)
