@@ -147,21 +147,6 @@ Number:Length			owmForecastHour24Rain			"24h Vorhersage Regen [%.1f %unit%]"				
 Number:Length			owmForecastHour24Snow			"24h Vorhersage Schneefall [%.1f %unit%]"		    <snow>			(gOwmForecastHour,gOwmForecastHour24) {channel="openweathermap:hourly-forecast:api:local:forecastHours24#snow"}
 DateTime	owmForecastHour24Timestamp	"24h Vorhersage Zeit [%1$tA, %1$td.%1$tm.%1$tY %1$tH:%1$tM]"		<time>			(gOwmForecastHour,gOwmForecastHour24) {channel="openweathermap:hourly-forecast:api:local:forecastHours24#time-stamp"}
 
-// Forecast Today
-Image					owmForecastTodayIcon		    "Vorhersage Heute Wetterlage Icon"					    <sun_clouds>	(gOwmForecastHour,gOwmForecastToday) {channel="openweathermap:daily-forecast:api:local:forecastToday#icon"}
-String					owmForecastTodayCondition	    "Vorhersage Heute Wetterlage [%s]"					    <sun_clouds>	(gOwmForecastHour,gOwmForecastToday) {channel="openweathermap:daily-forecast:api:local:forecastToday#condition"}
-String				    owmForecastTodayConditionId	    "Vorhersage Heute Wetterlage ID [%s]"				    <sun_clouds>	/*(gOwmForecastHour,gOwmForecastHour24)*/ {channel="openweathermap:daily-forecast:api:local:forecastToday#condition-id"}
-String				    owmForecastTodayIconId		    "Vorhersage Heute Wetterlage Icon ID"				    <sun_clouds>	/*(gOwmForecastHour,gOwmForecastHour24)*/ {channel="openweathermap:daily-forecast:api:local:forecastToday#icon-id"}
-Number:Temperature		owmForecastTodayTemperature	    "Vorhersage Heute Temperatur [%.1f %unit%]"		        <temperature>	(gOwmForecastHour,gOwmForecastToday) {channel="openweathermap:daily-forecast:api:local:forecastToday#temperature"}
-Number:Pressure			owmForecastTodayPressure	    "Vorhersage Heute Luftdruck [%.1f %unit%]"			    <pressure>		(gOwmForecastHour,gOwmForecastToday) {channel="openweathermap:daily-forecast:api:local:forecastToday#pressure"}
-Number:Dimensionless	owmForecastTodayHumidity	    "Vorhersage Heute Luftfeuchtigkeit [%.1f %unit%]"	    <humidity>		(gOwmForecastHour,gOwmForecastToday) {channel="openweathermap:daily-forecast:api:local:forecastToday#humidity"}
-Number:Speed			owmForecastTodayWindSpeed	    "Vorhersage Heute Windgeschwindigkeit [%.1f km/h]"	    <wind>			(gOwmForecastHour,gOwmForecastToday) {channel="openweathermap:daily-forecast:api:local:forecastToday#wind-speed"}
-Number:Dimensionless	owmForecastTodayWindDirection   "Vorhersage Heute Windrichtung [SCALE(wind.scale):%s]"	<wind>          (gOwmForecastHour,gOwmForecastToday) {channel="openweathermap:daily-forecast:api:local:forecastToday#wind-direction"}
-Number:Dimensionless	owmForecastTodayCloudiness		"Vorhersage Heute Bewölkung [%.1f %unit%]"			    <sun_clouds>	(gOwmForecastHour,gOwmForecastToday) {channel="openweathermap:daily-forecast:api:local:forecastToday#cloudiness"}
-Number:Length			owmForecastTodayRain			"Vorhersage Heute Regen [%.1f %unit%]"				    <rain>			(gOwmForecastHour,gOwmForecastToday) {channel="openweathermap:daily-forecast:api:local:forecastToday#rain"}
-Number:Length			owmForecastTodaySnow			"Vorhersage Heute Schneefall [%.1f %unit%]"		        <snow>			(gOwmForecastHour,gOwmForecastToday) {channel="openweathermap:daily-forecast:api:local:forecastToday#snow"}
-DateTime	owmForecastTodayTimestamp	"Vorhersage Zeit [%1$tA, %1$td.%1$tm.%1$tY %1$tH:%1$tM]"		        <time>			(gOwmForecastHour,gOwmForecastToday) {channel="openweathermap:daily-forecast:api:local:forecastToday#time-stamp"}
-
 // Forecast Hourly Station Details
 String		owmForecastHourStationId		"Wetterstation ID"					<house>		(gOwmForecastHour,gOwmForecastHourStation) {channel="openweathermap:hourly-forecast:api:local:station#id"}
 String		owmForecastHourStationName		"Wetterstation Name"				<house>		(gOwmForecastHour,gOwmForecastHourStation) {channel="openweathermap:hourly-forecast:api:local:station#name"}
