@@ -1,0 +1,44 @@
+import org.eclipse.xtext.xbase.lib.Functions
+
+val Functions$Function1 <String,Boolean> wakePerson = [person |
+
+val wecker = Wecker.members.findFirst[w | w.name == person+"_Wecker"] as GroupItem
+val isActive = wecker.members.findFirst[a | a.name == wecker.name+"_Aktiv"]
+
+//Functionbody
+if(  isActive.state == OFF || isActive.state == NULL){
+    
+    sendCommand(isActive ,ON)
+    val lights = wecker.members.findFirst[l | l.name == wecker.name+"_Lampen"]
+   
+    var lightColor = wecker.members.findFirst[l | l.name == wecker.name+"_Farbtemperatur"]
+    
+	var Dimmer=1
+	val maxStufe = 25
+    val durationWecker = 200000
+	val heizungBefore = Bad_Heizung_Soll_Proxy.state as Number
+	//Bad_Heizung_Soll_Proxy.sendCommand(21)
+	while(Dimmer<=maxStufe)
+	{
+    	sendCommand(lights, Dimmer++)
+		sendCommand(lightColor,50-Dimmer)
+       	Thread::sleep(Math::round(durationWecker/maxStufe))
+	}
+	sendNotification("tim.prange@hotmail.de", "Aufstehen! Der Wecker klingelt!")
+	//Bad_Heizung_Soll_Proxy.sendCommand(heizungBefore)
+    sendCommand(isActive, OFF)
+    true
+}
+false
+]
+
+
+rule "Weckers"
+when
+    Time cron "0 0/1 * * * ?"
+then
+
+   //wakePerson.apply("Tim")
+   //Switch case über Person, die den Wecker ausgelöst hat. Dann ENtsprechenden Functionscall wakePerson.apply(tim.prange@hotmail.de, Tim_Wecker_Lampen)
+    
+end
