@@ -1,6 +1,9 @@
 Contact WZ_Fenster "Wohnzimmer Fenster [MAP(fenster.map):%s]" (Fenster, Wohnzimmer) {channel="zwave:device:7d97f490:node7:sensor_door"}
 Contact Bad_Fenster "Bad Fenster [MAP(fenster.map):%s]" (Fenster, Bad) {channel="zwave:device:7d97f490:node12:sensor_door"}
-Contact Kueche_Fenster "Küche Fenster [MAP(fenster.map):%s]" (Fenster, Kueche) {channel="zwave:device:7d97f490:node11:sensor_door"}
+Contact Tim_Fenster "Tim Fenster [MAP(fenster.map):%s]" (Fenster, Tim) {channel="zwave:device:7d97f490:node16:sensor_door"}
+Contact Kueche_Fenster_Tisch "Küche Fenster Tisch [MAP(fenster.map):%s]" (Kueche_Fenster) {channel="zwave:device:7d97f490:node11:sensor_door"}
+Contact Kueche_Fenster_Zeile "Küche Fenster Zeile [MAP(fenster.map):%s]" (Kueche_Fenster) {channel="zwave:device:7d97f490:node15:sensor_door"}
+Group:Contact:OR(OPEN,CLOSED) Kueche_Fenster "Küche Fenster [MAP(fenster.map):%s]" (Fenster, Kueche)
 Contact Flur_Tuer "Eingangstür [MAP(fenster.map):%s]" <frontdoor> (Tueren, Flur) {channel="zwave:device:7d97f490:node14:sensor_door"} 
 
 Group:Contact:OR(OPEN,CLOSED) Fenster "Fenster [MAP(fenster.map):%s]" <window> (Contacts)
