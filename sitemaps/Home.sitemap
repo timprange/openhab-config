@@ -182,6 +182,7 @@ sitemap Home label="SmartHome-Zentrale"
         Group item=Lampen
         Group item=Contacts
         Group item=Batterie
+        Group item=Wecker_Anz
         Text item=actionControl label="Staubsauger [%s]" {
 			Switch item=actionControl mappings=[vacuum="Saugen", pause="Pause",spot="Spot", dock="Dock"]
  			Switch item=actionFan mappings=[38="Leise", 60="Normal", 77="Power",90="MAX", -1="Sonstiges"]

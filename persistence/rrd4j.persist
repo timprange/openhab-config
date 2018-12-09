@@ -1,13 +1,10 @@
-// persistence strategies have a name and a definition and are referred to in the "Items" section
-    Strategies {
-        // for rrd charts, we need a cron strategy
-        everyMinute : "0 * * * * ?"
-        everyHour	: "0 0 * * * ?"
+Strategies {
+    // for rrd charts, we need a cron strategy
+    everyMinute : "0 * * * * ?"
+    default = everyChange
+}
 
-        default = everyMinute
-        
-    }
-    Items {
-        // which data to be stored
-    	rrd4j : strategy = everyChange, everyMinute
-    	}
+Items {
+    // persist items on every change and every minute
+    * : strategy = everyChange, everyMinute, restoreOnStartup
+}

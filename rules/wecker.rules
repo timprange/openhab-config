@@ -8,16 +8,18 @@ val isActive = wecker.members.findFirst[a | a.name == wecker.name+"_Aktiv"]
 //Functionbody
 if(  isActive.state == OFF || isActive.state == NULL){
     
-    sendCommand(isActive ,ON)
+    sendCommand(isActive, ON)
     val lights = wecker.members.findFirst[l | l.name == wecker.name+"_Lampen"]
    
     var lightColor = wecker.members.findFirst[l | l.name == wecker.name+"_Farbtemperatur"]
     
 	var Dimmer=1
 	val maxStufe = 25
-    val durationWecker = 200000
+    val durationWecker = 1200000 //20 Minuten
 	val heizungBefore = Bad_Heizung_Soll_Proxy.state as Number
-	//Bad_Heizung_Soll_Proxy.sendCommand(21)
+	if(Bad_Heizung_Mode_General == 1){
+		Bad_Heizung_Soll_Proxy.sendCommand(21)
+	}
 	while(Dimmer<=maxStufe)
 	{
     	sendCommand(lights, Dimmer++)
@@ -25,20 +27,21 @@ if(  isActive.state == OFF || isActive.state == NULL){
        	Thread::sleep(Math::round(durationWecker/maxStufe))
 	}
 	sendNotification("tim.prange@hotmail.de", "Aufstehen! Der Wecker klingelt!")
-	//Bad_Heizung_Soll_Proxy.sendCommand(heizungBefore)
-    sendCommand(isActive, OFF)
-    true
+	if(Bad_Heizung_Mode_General == 1){
+	Bad_Heizung_Soll_Proxy.sendCommand(heizungBefore)
+	}
+    	sendCommand(isActive, OFF)
 }
 false
 ]
 
 
-rule "Weckers"
+rule "Wecker Tim"
 when
-    Time cron "0 0/1 * * * ?"
+    Item Tim_Wecker_Switch changed to ON
 then
-
-   //wakePerson.apply("Tim")
-   //Switch case über Person, die den Wecker ausgelöst hat. Dann ENtsprechenden Functionscall wakePerson.apply(tim.prange@hotmail.de, Tim_Wecker_Lampen)
+	Tim_Wecker_Switch.postUpdate(OFF)
+    wakePerson.apply("Tim")
+    //Switch case über Person, die den Wecker ausgelöst hat. Dann ENtsprechenden Functionscall wakePerson.apply(tim.prange@hotmail.de, Tim_Wecker_Lampen)
     
 end

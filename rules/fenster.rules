@@ -1,27 +1,27 @@
 
-rule "WZ_Fenster"
-when 
-    Item WZ_Fenster changed
-then
-    if(Heizung_Sommer_Mode.state == OFF){
-        Wohnzimmer_Heizung_Mode.sendCommand(if (WZ_Fenster.state == OPEN) 0 else 1)
-    }
-end
+// rule "WZ_Fenster"
+// when 
+//     Item WZ_Fenster changed
+// then
+//     if(Heizung_Sommer_Mode.state == OFF){
+//         Wohnzimmer_Heizung_Mode.sendCommand(if (WZ_Fenster.state == OPEN) 0 else 1)
+//     }
+// end
 
-rule "Bad_Fenster"
-when
-    Item Bad_Fenster changed
-then
-    if(Heizung_Sommer_Mode.state == OFF){
-        Bad_Heizung_Mode.sendCommand(if (Bad_Fenster.state == OPEN) 0 else 1)
-    }
-end
+// rule "Bad_Fenster"
+// when
+//     Item Bad_Fenster changed
+// then
+//     if(Heizung_Sommer_Mode.state == OFF){
+//         Bad_Heizung_Mode.sendCommand(if (Bad_Fenster.state == OPEN) 0 else 1)
+//     }
+// end
 
-rule "Kueche_Fenster"
-when
-    Item Kueche_Fenster changed
-then
-    if(Heizung_Sommer_Mode.state == OFF){
-        Kueche_Heizung_Mode.sendCommand(if (Kueche_Fenster.state == OPEN) 0 else 1)
-    }
-end
+// rule "Kueche_Fenster"
+// when
+//     Item Kueche_Fenster changed
+// then
+//     if(Heizung_Sommer_Mode.state == OFF){
+//         Kueche_Heizung_Mode.sendCommand(if (Kueche_Fenster.state == OPEN) 0 else 1)
+//     }
+// end

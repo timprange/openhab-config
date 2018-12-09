@@ -7,7 +7,7 @@ Number WZ_Fenster_Batterie "Fenster Wohnzimmer Batterie" <battery> (Batterie) {c
 Number Bad_Fenster_Batterie "Fenster Bad Batterie" <battery> (Batterie) {channel="zwave:device:7d97f490:node12:battery-level"}
 Number Kueche_Fenster_Tisch_Batterie "Fenster Tisch Küche Batterie" <battery> (Batterie) {channel="zwave:device:7d97f490:node11:battery-level"}
 Number Kueche_Fenster_Zeile_Batterie "Fenster Zeile Küche Batterie" <battery> (Batterie) {channel="zwave:device:7d97f490:node15:battery-level"}
-Number Tim_Fenster_Batterie "Tim Bad Batterie" <battery> (Batterie) {channel="zwave:device:7d97f490:node16:battery-level"}
+Number Tim_Fenster_Batterie "Fenster Tim Batterie" <battery> (Batterie) {channel="zwave:device:7d97f490:node16:battery-level"}
 Number Flur_Tuer_Batterie "Wohnungstür Batterie" <battery> (Batterie) {channel="zwave:device:7d97f490:node14:battery-level"} 
 //Sensoren
 Number WZ_Multisensor_Batterie "Raumsensor Wohnzimmer Batterie" <battery> (Batterie) {channel="zwave:device:7d97f490:node2:battery-level"}

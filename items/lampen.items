@@ -21,13 +21,13 @@ Group Tim_Wecker_Lampen "Tim Wecker" (Tim_Wecker)
 Group Tim_Wecker_Farbtemperatur "Tim Wecker Farbtemperatur" (Tim_Wecker)
 //-----------WOHNZIMMER--------------
 //Schreibtisch-Lichtband
-Dimmer WZ_Schreibtisch_Lichtstreifen_Licht "Schreibtisch Lichtband Wohnzimmer" (WZ_Lampen) [ "Lighting" ] {channel="yeelight:Stripe:0x00000000031a9e14:Brightness"}
-Color  WZ_Schreibtisch_Lichtsteifen_Farbe "Schreibtisch Lichtband Wohnzimmer" <colorpicker> (WZ_Farbe) [ "Lighting" ] {channel="yeelight:Stripe:0x00000000031a9e14:Color"}
-Dimmer WZ_Schreibtisch_Lichtstreifen_Farbtemperatur "Schreibtisch Lichtband Farbtemperatur Wohnzimmer" <colorpicker> (WZ_Farbtemperatur) {channel="yeelight:Stripe:0x00000000031a9e14:Color_Temperature"}
+Dimmer WZ_Schreibtisch_Lichtstreifen_Licht "Schreibtisch Lichtband Wohnzimmer" (WZ_Lampen) [ "Lighting" ] {channel="miio:basic:036D0B81:brightness"}
+Color  WZ_Schreibtisch_Lichtsteifen_Farbe "Schreibtisch Lichtband Wohnzimmer" <colorpicker> (WZ_Farbe) [ "Lighting" ] {channel="miio:basic:036D0B81:rgbColor"}
+Dimmer WZ_Schreibtisch_Lichtstreifen_Farbtemperatur "Schreibtisch Lichtband Farbtemperatur Wohnzimmer" <colorpicker> (WZ_Farbtemperatur) {channel="miio:basic:036D0B81:colorTemperature"}
 //Sofa-Regal-Lichtband
-Dimmer WZ_Sofaregal_Lichtstreifen_Licht "Sofaregal Lichtband Wohnzimmer" (WZ_Lampen) [ "Lighting" ] {channel="yeelight:Stripe:0x00000000036d0b81:Brightness"}
-Color WZ_Sofaregal_Lichtstreifen_Farbe "Sofaregal Lichtband Wohnzimmer" <colorpicker> (WZ_Farbe) [ "Lighting" ] {channel="yeelight:Stripe:0x00000000036d0b81:Color"}
-Dimmer WZ_Sofaregal_Lichtstreifen_Farbtemperatur "Sofaregal Lichtband Farbtemperatur Wohnzimmer" <colorpicker> (WZ_Farbtemperatur) {channel="yeelight:Stripe:0x00000000036d0b81:Color_Temperature"}
+Dimmer WZ_Sofaregal_Lichtstreifen_Licht "Sofaregal Lichtband Wohnzimmer" (WZ_Lampen) [ "Lighting" ] {channel="miio:basic:031A9E14:brightness"}
+Color WZ_Sofaregal_Lichtstreifen_Farbe "Sofaregal Lichtband Wohnzimmer" <colorpicker> (WZ_Farbe) [ "Lighting" ] {channel="miio:basic:031A9E14:rgbColor"}
+Dimmer WZ_Sofaregal_Lichtstreifen_Farbtemperatur "Sofaregal Lichtband Farbtemperatur Wohnzimmer" <colorpicker> (WZ_Farbtemperatur) {channel="miio:basic:031A9E14:colorTemperature"}
 //Deckenleuchte
 Dimmer WZ_Decke_1_Licht "Deckenleuchte 1" (WZ_Decke_Licht) {channel="hue:0100:0017882a3d69:4:brightness"}
 Dimmer WZ_Decke_2_Licht "Deckenleuchte 2" (WZ_Decke_Licht) {channel="hue:0100:0017882a3d69:5:brightness"}
