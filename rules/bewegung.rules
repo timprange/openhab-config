@@ -1,0 +1,6 @@
+rule "Bewegung Flur"
+when
+    Item Flur_Bewegungsmelder_Bewegung changed
+then
+    Flur_Stehlampe_Licht.sendCommand(if(triggeringItem.state == OFF) OFF else ON)
+end

@@ -10,4 +10,12 @@ Number Tim_Multisensor_Feuchtigkeit "Feuchtigkeit [%s %%]" (all, rrd4j) {channel
 
 Number Tim_Multisensor_Diagramm_Time <line>
 
+//Flur Bewegungsmelder
+Number Flur_Bewegungsmelder_Helligkeit "Flur Helligkeit [%s LUX]" (Flur_Bewegungsmelder) {channel="hue:0106:0017882a3d69:6:illuminance"}
+Switch Flur_Bewegungsmelder_Bewegung "Flur Bewegung" (Flur_Bewegungsmelder) {channel="hue:0107:0017882a3d69:5:presence"}
+Group Flur_Bewegungsmelder "Flur Bewegungsmelder" (all)
+
+//-------------------------SCHALTER---------------------//
+Number WZ_Decke_Schalter "Deckenlichtschalter" {channel="hue:0820:0017882a3d69:2:dimmer_switch"}
+
 Group Controll "Verwaltung" <settings>

@@ -196,45 +196,45 @@ sitemap Home label="SmartHome-Zentrale"
 			Group  item=gVacNetwork
 		}
     }
-    Frame label="Lokales Wetter" {
-	    Image item=owmCurrentIcon
-	    Text item=owmCurrentCondition
-	    /*Text item=owmCurrentConditionId
-	    Text item=owmCurrentIconId*/
-	    Text item=owmCurrentTemperature
-	    Text item=owmCurrentPressure
-	    Text item=owmCurrentHumidity
-	    Text item=owmCurrentWindSpeed
-	    Text item=owmCurrentWindDirection
-	    Text item=owmCurrentCloudiness
-	    Text item=owmCurrentRain
-	    Text item=owmCurrentSnow
-	    Group item=gOwmCurrentStation label="Lokales Wetter Station Details"
-	    Group item=gOwmForecastHour label="Wetter Vorhersage" {
-		    Frame label="3h Wetter Vorhersage" {
-			    Image item=owmForecastHour03Icon
-			    Text item=owmForecastHour03Condition
-			    //Text item=owmForecastHour03ConditionId
-			    //Text item=owmForecastHour03IconId
-			    Text item=owmForecastHour03Temperature
-			    Text item=owmForecastHour03Pressure
-			    Text item=owmForecastHour03Humidity
-			    Text item=owmForecastHour03WindSpeed
-			    Text item=owmForecastHour03WindDirection
-			    Text item=owmForecastHour03Cloudiness
-			    Text item=owmForecastHour03Rain
-			    Text item=owmForecastHour03Snow
-			    Text item=owmForecastHour03Timestamp
-			    Group item=gOwmForecastHour03 label="3h Wetter Vorhersage"
-			    Group item=gOwmForecastHour06 label="6h Wetter Vorhersage"
-			    Group item=gOwmForecastHour09 label="9h Wetter Vorhersage"
-			    Group item=gOwmForecastHour12 label="12h Wetter Vorhersage"
-			    Group item=gOwmForecastHour15 label="15h Wetter Vorhersage"
-			    Group item=gOwmForecastHour18 label="18h Wetter Vorhersage"
-			    Group item=gOwmForecastHour21 label="21h Wetter Vorhersage"
-			    Group item=gOwmForecastHour24 label="24h Wetter Vorhersage"
-			    Group item=gOwmForecastHourStation label="Wetter Vorhersage Station Details"
-		    }      
-	    }
-    }
+    // Frame label="Lokales Wetter" {
+	//     Image item=owmCurrentIcon
+	//     Text item=owmCurrentCondition
+	//     /*Text item=owmCurrentConditionId
+	//     Text item=owmCurrentIconId*/
+	//     Text item=owmCurrentTemperature
+	//     Text item=owmCurrentPressure
+	//     Text item=owmCurrentHumidity
+	//     Text item=owmCurrentWindSpeed
+	//     Text item=owmCurrentWindDirection
+	//     Text item=owmCurrentCloudiness
+	//     Text item=owmCurrentRain
+	//     Text item=owmCurrentSnow
+	//     Group item=gOwmCurrentStation label="Lokales Wetter Station Details"
+	//     Group item=gOwmForecastHour label="Wetter Vorhersage" {
+	// 	    Frame label="3h Wetter Vorhersage" {
+	// 		    Image item=owmForecastHour03Icon
+	// 		    Text item=owmForecastHour03Condition
+	// 		    //Text item=owmForecastHour03ConditionId
+	// 		    //Text item=owmForecastHour03IconId
+	// 		    Text item=owmForecastHour03Temperature
+	// 		    Text item=owmForecastHour03Pressure
+	// 		    Text item=owmForecastHour03Humidity
+	// 		    Text item=owmForecastHour03WindSpeed
+	// 		    Text item=owmForecastHour03WindDirection
+	// 		    Text item=owmForecastHour03Cloudiness
+	// 		    Text item=owmForecastHour03Rain
+	// 		    Text item=owmForecastHour03Snow
+	// 		    Text item=owmForecastHour03Timestamp
+	// 		    Group item=gOwmForecastHour03 label="3h Wetter Vorhersage"
+	// 		    Group item=gOwmForecastHour06 label="6h Wetter Vorhersage"
+	// 		    Group item=gOwmForecastHour09 label="9h Wetter Vorhersage"
+	// 		    Group item=gOwmForecastHour12 label="12h Wetter Vorhersage"
+	// 		    Group item=gOwmForecastHour15 label="15h Wetter Vorhersage"
+	// 		    Group item=gOwmForecastHour18 label="18h Wetter Vorhersage"
+	// 		    Group item=gOwmForecastHour21 label="21h Wetter Vorhersage"
+	// 		    Group item=gOwmForecastHour24 label="24h Wetter Vorhersage"
+	// 		    Group item=gOwmForecastHourStation label="Wetter Vorhersage Station Details"
+	// 	    }      
+	//     }
+    // }
 }
