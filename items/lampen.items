@@ -43,7 +43,7 @@ Color WZ_Stehlampe_Licht_2_Farbe "Stehlampe 2" <colorpicker> (WZ_Stehlampe_Farbe
 Group:Dimmer WZ_Stehlampe_Licht "Stehlampe Wohnzimmer" <light> (WZ_Lampen) [ "Lighting" ]
 Group:Color WZ_Stehlampe_Farbe "Stehlampe Wohnzimmer" <colorpicker> (WZ_Farbe) [ "Lighting" ]
 //Regallampe
-Dimmer WZ_Regal_Licht "Regallicht Wohnzimmer" <light> (WZ_Lampen) [ "Lighting" ] {channel="hue:0010:0017882a3d69:13:switch"}
+Switch WZ_Regal_Licht "Regallicht Wohnzimmer" <light> (WZ_Lampen) [ "Lighting" ] {channel="hue:0010:0017882a3d69:13:switch"}
 //Tischlampe
 Dimmer WZ_Tisch_Licht "Tischlampe Wohnzimmer" <light> (WZ_Lampen) [ "Lighting" ] {channel="zwave:device:7d97f490:node3:switch_dimmer"}
 
@@ -51,7 +51,9 @@ Group WZ_Lampen "Wohnzimmer Lampen" <light> (Wohnzimmer, Lampen)
 Group WZ_Farbtemperatur "Wohnzimmer Farbtemperatur" <colorpicker> (Wohnzimmer, WZ_Lampen, Lampen_Farbtemperatur)
 Group WZ_Farbe "Wohnzimmer Farbe" <colorpicker> (Wohzimmer, WZ_Lampen, Lampen_Farbe) [ "Lighting" ]
 //-------------FLUR------------------
-Dimmer Flur_Stehlampe_Licht "Flurlicht" (Flur_Lampen) [ "Lighting" ] {channel="hue:0100:0017882a3d69:9:brightness"}
+Dimmer Flur_Stehlampe_Licht "Flurlicht" (Flur_Lampen) [ "Lighting" ] {channel="hue:0220:0017882a3d69:14:brightness"}
+Dimmer Flur_Stehlampe_Farbtemperatur "Flurlicht Farbtemperatur" (Flur_Farbtemperatur) [ "Lighting" ] {channel="hue:0220:0017882a3d69:14:color_temperature"}
+Group Flur_Farbtemperatur "Flur Farbtemperatur" <colorpicker> (Flur_Lampen)
 Group Flur_Lampen "Flur Lampen" <light> (Flur, Lampen)
 
 //-------General Groups-------------

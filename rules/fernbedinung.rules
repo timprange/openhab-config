@@ -1,0 +1,39 @@
+val SWITCH_ON_PRESSED = "1000.0"
+val SWITCH_ON_RELEASED = "1002.0"
+val SWITCH_ON_HOLD = "1001.0"
+val SWITCH_ON_HOLD_RELEASED = "1003.0"
+val SWITCH_UP_PRESSED = "2000.0"
+val SWITCH_UP_RELEASED = "2002.0"
+val SWITCH_UP_HOLD = "2001.0"
+val SWITCH_UP_HOLD_RELEASED = "2003.0"
+val SWITCH_DOWN_PRESSED = "3000.0"
+val SWITCH_DOWN_RELEASED = "3002.0"
+val SWITCH_DOWN_HOLD = "3001.0"
+val SWITCH_DOWN_HOLD_RELEASED = "3003.0"
+val SWITCH_OFF_PRESSED = "4000.0"
+val SWITCH_OFF_RELEASED = "4002.0"
+val SWITCH_OFF_HOLD = "4001.0"
+val SWITCH_OFF_HOLD_RELEASED = "4003.0"
+
+rule "WZ Fernbedienung"
+when
+    Channel "hue:0820:0017882a3d69:2:dimmer_switch_event" triggered
+then
+    switch(receivedEvent.getEvent){
+        case SWITCH_ON_PRESSED: {
+           WZ_Decke_Licht.sendCommand(ON)
+        }
+        case SWITCH_OFF_PRESSED: {
+            WZ_Decke_Licht.sendCommand(OFF)
+        }
+        case SWITCH_UP_HOLD,
+        case SWITCH_UP_PRESSED: {
+            WZ_Decke_Licht.sendCommand((WZ_Decke_Licht.state as Number) +10)
+        }
+        case SWITCH_DOWN_HOLD,
+        case SWITCH_DOWN_PRESSED: {
+            WZ_Decke_Licht.sendCommand((WZ_Decke_Licht.state as Number) -10)
+        }
+    }
+
+end

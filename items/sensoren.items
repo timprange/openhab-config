@@ -15,7 +15,13 @@ Number Flur_Bewegungsmelder_Helligkeit "Flur Helligkeit [%s LUX]" (Flur_Bewegung
 Switch Flur_Bewegungsmelder_Bewegung "Flur Bewegung" (Flur_Bewegungsmelder) {channel="hue:0107:0017882a3d69:5:presence"}
 Group Flur_Bewegungsmelder "Flur Bewegungsmelder" (all)
 
+//Wohnzimmer Bewegungsmelder
+Number WZ_Bewegungsmelder_Helligkeit "Wohnzimmer Helligkeit [%s LUX]" (Flur_Bewegungsmelder) {channel="hue:0106:0017882a3d69:10:illuminance"}
+Switch WZ_Bewegungsmelder_Bewegung "Wohnzimmer Bewegung" (Flur_Bewegungsmelder) {channel="hue:0107:0017882a3d69:9:presence"}
+Group WZ_Bewegungsmelder "Wohnzimmer Bewegungsmelder" (all)
+
 //-------------------------SCHALTER---------------------//
 Number WZ_Decke_Schalter "Deckenlichtschalter" {channel="hue:0820:0017882a3d69:2:dimmer_switch"}
+Number Tim_Schalter "Tim Lichtschalter" {channel="hue:0820:0017882a3d69:12:dimmer_switch"}
 
 Group Controll "Verwaltung" <settings>
