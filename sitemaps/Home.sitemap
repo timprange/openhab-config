@@ -28,6 +28,7 @@ sitemap Home label="SmartHome-Zentrale"
                     Slider item=WZ_Farbtemperatur visibility=[Aendere_Farbe==OFF] icon=colorpicker label="Gesamt"
                     Slider item=WZ_Schreibtisch_Lichtstreifen_Farbtemperatur visibility=[Aendere_Farbe==OFF] icon=colorpicker label="Schreibtisch Lichtstreifen"
                     Slider item=WZ_Sofaregal_Lichtstreifen_Farbtemperatur visibility=[Aendere_Farbe==OFF] icon=colorpicker label="Sofa Lichtstreifen"
+                    Slider item=WZ_Stehlampe_Farbtemperatur visibility=[Aendere_Farbe==OFF] icon=colorpicker label="Stehlampe"
                     Slider item=WZ_Schreibtisch_Schreibtischlampe_Licht_Farbtemperatur visibility=[Aendere_Farbe==OFF] icon=colorpicker label="Schreibtischlampe" 
                 }
             }
@@ -97,21 +98,42 @@ sitemap Home label="SmartHome-Zentrale"
                 Switch item=Kueche_Heizung_Soll_Proxy label="Raumtemperatur" mappings=[18="18 °C", 21="21 °C",23="23 °C", 99="AUS"] icon=heating_own visibility=[Kueche_Heizung_Mode_General == 1]
                 Switch item=Kueche_Heizung_Mode_General label="Raumtemperatur" mappings=[0="AUS", 1="EIN"] icon=heating_own visibility=[Kueche_Heizung_Mode_General == 0]
             }
+            Frame label="Beleuchtung"
+            {
+                Default item=Kueche_Go_Licht label="Tischlampe"
+                Text label="Farbe" icon=colorpicker
+                {
+                    Switch item=Aendere_Farbe mappings=[OFF="Farbtemperatur", ON="Farbe"] icon=colorpicker
+                    Colorpicker item=Kueche_Farbe visibility=[Aendere_Farbe==ON] label="Gesamt"
+                    Slider item=Kueche_Farbtemperatur visibility=[Aendere_Farbe==OFF] icon=colorpicker label="Gesamt" 
+                }
+            }
         }
         Text label="Tim" icon=bedroom
         {
-             Frame label="Beleuchtung"
+            Frame label="Beleuchtung"
             {
-                Default item=SZ_Nachttisch_Licht
-                Default item=SZ_Stehlampe_Licht
-                Default item=SZ_Wandlampe_Licht
+                Switch item=Tim_Lampen label="Lampen" mappings=[OFF="Ausschalten"] visibility=[Tim_Lampen >0]
+                Default item=SZ_Nachttisch_Licht label="Nachttisch"
+                Default item=SZ_Stehlampe_Licht label="Stehlampe"
+                Default item=SZ_Wandlampe_Licht label="Wandlampe"
+                
                 Text label="Farbe" icon=colorpicker
                 {
-                    Slider item=Tim_Farbtemperatur icon=colorpicker label="Gesamt"
-                    Slider item=SZ_Nachttisch_Licht_Farbtemperatur icon=colorpicker label="Nachttisch"
-                    Slider item=SZ_Stehlampe_Licht_Farbtemperatur icon=colorpicker label="Stehlampe"
-                    Slider item=SZ_Wandlampe_Licht_Farbtemperatur icon=colorpicker label="Wandlampe" 
+                    Slider item=Tim_Farbtemperatur label="Gesamt"
+                    Slider item=SZ_Nachttisch_Licht_Farbtemperatur label="Nachttisch"
+                    Slider item=SZ_Stehlampe_Licht_Farbtemperatur label="Stehlampe"
+                    Slider item=SZ_Wandlampe_Licht_Farbtemperatur label="Wandlampe"
                 }
+            }
+            Frame label="Medien"
+            {
+                Default item=Tim_Fernseher_Steckdose label="Fernseher"
+            }
+            Frame label="Wecker"
+            {
+                Default item=Tim_Wecker_Timestamp
+                Default item=Tim_Wecker_DateTime
             }
             Frame label="Umgebung"
             {
@@ -142,11 +164,22 @@ sitemap Home label="SmartHome-Zentrale"
         }
         Text label="Sven" icon=bedroom
         {
+            Frame
+            {
             Switch item=Sven mappings=[OFF="Ausschalten"] visibility=[Sven_Schreibtischlampe_Licht >0, Sven_Steckdose==ON]
             Switch item=Sven_Steckdose label="Schreibtisch"
-            Switch item=Sven_Schreibtischlampe_Licht label="Schreibtischlampe" icon=light
-            Default item=Sven_Schreibtischlampe_Licht label="Helligkeit" visibility=[Sven_Schreibtischlampe_Licht >0]
-            Default item=Sven_Schreibtischlampe_Farbtemperatur label="Farbtemperatur" visibility=[Sven_Schreibtischlampe_Licht >0]
+            }
+            Frame
+            {
+                Switch item=Sven_Deckenlicht label="Deckenlicht" icon=light
+                Slider item=Sven_Deckenlicht label="Helligkeit" visibility=[Sven_Deckenlicht >0]
+            }
+            Frame
+            {
+                Switch item=Sven_Schreibtischlampe_Licht label="Schreibtischlampe" icon=light
+                Default item=Sven_Schreibtischlampe_Licht label="Helligkeit" visibility=[Sven_Schreibtischlampe_Licht >0]
+                Default item=Sven_Schreibtischlampe_Farbtemperatur label="Farbtemperatur" visibility=[Sven_Schreibtischlampe_Licht >0]
+            }
         }
     }
     Frame label="Funktion"
@@ -155,14 +188,14 @@ sitemap Home label="SmartHome-Zentrale"
         {
             Frame
             {
-                Switch item=Heizung_Mode_General label=Heizung mappings=[1=EIN, 0=AUS, 15=BOOST] icon=radiator
+                Switch item=Heizung_Mode_General label=Heizung mappings=[0=AUS, 1=EIN, 15=BOOST] icon=radiator
             }
             Frame label="Wohnzimmer"
             {
                 Text label="Aktuell [%.1f °C]" item=WZ_Heizung_Ist
                 Setpoint item=WZ_Heizung_Soll label="Raumtemperatur [%.1f °C]" step=0.5 minValue=8 maxValue=28 icon=heating_own
 		        Switch item=WZ_Heizung_Soll_Proxy label="Raumtemperatur" mappings=[18="18 °C", 21="21 °C",23="23 °C", 99="AUS"] icon=heating_own visibility=[WZ_Heizung_Mode_General == 1]
-                Switch item=WZ_Heizung_Mode_General label="Raumtemperatur" mappings=[1="EIN", 0="AUS"] icon=heating_own visibility=[WZ_Heizung_Mode_General == 0]
+                Switch item=WZ_Heizung_Mode_General label="Raumtemperatur" mappings=[0="AUS", 1="EIN"] icon=heating_own visibility=[WZ_Heizung_Mode_General == 0]
             }
             Frame label="Bad"
             {
@@ -196,45 +229,4 @@ sitemap Home label="SmartHome-Zentrale"
 			Group  item=gVacNetwork
 		}
     }
-    // Frame label="Lokales Wetter" {
-	//     Image item=owmCurrentIcon
-	//     Text item=owmCurrentCondition
-	//     /*Text item=owmCurrentConditionId
-	//     Text item=owmCurrentIconId*/
-	//     Text item=owmCurrentTemperature
-	//     Text item=owmCurrentPressure
-	//     Text item=owmCurrentHumidity
-	//     Text item=owmCurrentWindSpeed
-	//     Text item=owmCurrentWindDirection
-	//     Text item=owmCurrentCloudiness
-	//     Text item=owmCurrentRain
-	//     Text item=owmCurrentSnow
-	//     Group item=gOwmCurrentStation label="Lokales Wetter Station Details"
-	//     Group item=gOwmForecastHour label="Wetter Vorhersage" {
-	// 	    Frame label="3h Wetter Vorhersage" {
-	// 		    Image item=owmForecastHour03Icon
-	// 		    Text item=owmForecastHour03Condition
-	// 		    //Text item=owmForecastHour03ConditionId
-	// 		    //Text item=owmForecastHour03IconId
-	// 		    Text item=owmForecastHour03Temperature
-	// 		    Text item=owmForecastHour03Pressure
-	// 		    Text item=owmForecastHour03Humidity
-	// 		    Text item=owmForecastHour03WindSpeed
-	// 		    Text item=owmForecastHour03WindDirection
-	// 		    Text item=owmForecastHour03Cloudiness
-	// 		    Text item=owmForecastHour03Rain
-	// 		    Text item=owmForecastHour03Snow
-	// 		    Text item=owmForecastHour03Timestamp
-	// 		    Group item=gOwmForecastHour03 label="3h Wetter Vorhersage"
-	// 		    Group item=gOwmForecastHour06 label="6h Wetter Vorhersage"
-	// 		    Group item=gOwmForecastHour09 label="9h Wetter Vorhersage"
-	// 		    Group item=gOwmForecastHour12 label="12h Wetter Vorhersage"
-	// 		    Group item=gOwmForecastHour15 label="15h Wetter Vorhersage"
-	// 		    Group item=gOwmForecastHour18 label="18h Wetter Vorhersage"
-	// 		    Group item=gOwmForecastHour21 label="21h Wetter Vorhersage"
-	// 		    Group item=gOwmForecastHour24 label="24h Wetter Vorhersage"
-	// 		    Group item=gOwmForecastHourStation label="Wetter Vorhersage Station Details"
-	// 	    }      
-	//     }
-    // }
 }

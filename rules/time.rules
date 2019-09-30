@@ -1,0 +1,69 @@
+import org.openhab.core.library.types.*
+import org.joda.time.*
+import org.eclipse.xtext.xbase.lib.*
+
+val Functions$Function3 updateTimeOfDay = [String tod, String ptod, boolean update |
+        logInfo("Weather", "Setting PreviousTimeOfDay to \"" + ptod + "\" and TimeOfDay to \"" + tod + "\"")
+        if(update) {
+                TimeOfDay.postUpdate(tod)
+                PreviousTimeOfDay.postUpdate(ptod)
+        }
+        else {
+                TimeOfDay.sendCommand(tod)
+                PreviousTimeOfDay.sendCommand(ptod)
+        }
+]
+
+rule "Get time period for right now"
+when
+        System started
+then
+    val morning = now.withTimeAtStartOfDay.plusHours(6).millis
+        val sunrise = new DateTime((Sunrise_Time.state as DateTimeType).calendar.timeInMillis)
+        val twilight = new DateTime((Twilight_Time.state as DateTimeType).calendar.timeInMillis)
+        val evening = new DateTime((Sunset_Time.state as DateTimeType).calendar.timeInMillis)
+        val night = now.withTimeAtStartOfDay.plusHours(22).millis
+
+        if(now.isAfter(morning) && now.isBefore(sunrise))       updateTimeOfDay.apply("Morning", "Night", true)
+        else if(now.isAfter(sunrise) && now.isBefore(twilight)) updateTimeOfDay.apply("Day", "Morning", true)
+        else if(now.isAfter(twilight) && now.isBefore(evening)) updateTimeOfDay.apply("Twilight", "Day", true)
+        else if(now.isAfter(evening) && now.isBefore(night))    updateTimeOfDay.apply("Evening", "Twilight", true)
+        else                                                    updateTimeOfDay.apply("Night", "Evening", true)
+end
+
+rule "Morning start"
+when
+        Time cron "0 0 6 * * ? *"
+then
+    updateTimeOfDay.apply("Morning", TimeOfDay.state.toString, false)
+end
+
+rule "Day start"
+when
+        Item Sunrise_Event received update ON
+then
+    updateTimeOfDay.apply("Day", TimeOfDay.state.toString, false)
+end
+
+rule "Twilight start"
+when
+        Item Twilight_Event received update ON
+then
+    updateTimeOfDay.apply("Twilight", TimeOfDay.state.toString, false)
+end
+
+rule "Evening start"
+when
+        Item Sunset_Event received update ON
+then
+        logInfo("Weather", "Its Evening!")
+        PreviousTimeOfDay.sendCommand(TimeOfDay.state.toString)
+        TimeOfDay.sendCommand("Evening")
+end
+
+rule "Night started"
+when
+        Time cron "0 0 22 * * ? *"
+then
+    updateTimeOfDay.apply("Night", TimeOfDay.state.toString, false)
+end

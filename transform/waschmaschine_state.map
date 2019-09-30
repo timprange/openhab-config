@@ -1,8 +1,8 @@
-0 = aus
-1 = standby
-2 = zeitvorwahl
-3 = waschen
-4 = schleudern
-5 = beendet
+0.0 = aus
+1.0 = standby
+2.0 = zeitvorwahl
+3.0 = waschen
+4.0 = schleudern
+5.0 = beendet
 NULL = unbekannt
 - = unbekannt

@@ -1,0 +1,9 @@
+String          TimeOfDay
+String          PreviousTimeOfDay
+
+Switch          Twilight_Event                              (Weather) { astro="planet=sun, type=set, property=start, offset=-90" }
+DateTime        Twilight_Time   "Twilight [%1$tr]"  <moon>  (Weather) { astro="planet=sun, type=set, property=start, offset=-90" }
+Switch          Sunset_Event                                (Weather) { astro="planet=sun, type=set, property=start" }
+DateTime        Sunset_Time     "Sunset [%1$tr]"    <moon>  (Weather) { astro="planet=sun, type=set, property=start" }
+Switch          Sunrise_Event                               (Weather) { astro="planet=sun, type=rise, property=start" }
+DateTime        Sunrise_Time    "Sunrise [%1$tr]"   <sun>   (Weather) { astro="planet=sun, type=rise, property=start" }

@@ -2,6 +2,9 @@
 String CalDav_Wecker   "Wird gewecket: [%s]"  <man_1> (Wecker_Anz) { caldavPersonal="calendar:wecker type:EVENT eventNr:1 value:NAME" }
 DateTime CalDav_Wecker_Date "Nächster Wecker [%1$th:%1$tM]" <time> (Wecker_Anz) { caldavPersonal="calendar:wecker type:EVENT eventNr:1 value:START" }
 
+Number Tim_Wecker_Timestamp "Weckzeit Timestamp [%s]"
+DateTime Tim_Wecker_DateTime "Weckzeit  [%1$tH:%1$tM]"
+
 Switch Tim_Wecker_Aktiv (Tim_Wecker)
 Switch Tim_Wecker_Switch (Wecker_Swichtes)
 Group Tim_Wecker (Wecker)

@@ -1,6 +1,105 @@
-rule "Bewegung Flur"
+val helligkeitTag = 50
+val helligkeitNacht = 5
+val helligkeitsSchwelle = 20
+
+var isNight = false
+
+var Timer timer = null
+
+var Timer timerKueche = null
+
+var Timer timerWZ = null
+
+var ruleTriggered = false
+
+rule "Bewegung Flur ON"
 when
-    Item Flur_Bewegungsmelder_Bewegung changed
+    Item Flur_Bewegungsmelder_Bewegung changed to ON
 then
-    Flur_Stehlampe_Licht.sendCommand(if(triggeringItem.state == OFF) OFF else ON)
+    if(timer === null){
+        Flur_Stehlampe_Licht.sendCommand(ON)
+    }
+    else{
+        timer.cancel
+    }
+end
+
+
+rule "Bewegung Flur OFF"
+when
+    Item Flur_Bewegungsmelder_Bewegung changed to OFF
+then
+    
+    timer = createTimer(now.plusMinutes(2)) [|
+        Flur_Stehlampe_Licht.sendCommand(OFF)
+        timer = null
+    ]
+    
+end
+
+rule "Bewegung Kueche ON"
+when
+    Item Kueche_Bewegungsmelder_Bewegung changed to ON
+then
+    if(timerKueche === null && Kueche_Bewegungsmelder_Helligkeit.state < helligkeitsSchwelle){
+        Kueche_Go_Licht.sendCommand(ON)
+    }
+    else{
+        timerKueche.cancel
+    }
+end
+
+
+rule "Bewegung Kueche OFF"
+when
+    Item Kueche_Bewegungsmelder_Bewegung changed to OFF
+then
+    
+    timerKueche = createTimer(now.plusMinutes(2)) [|
+        Kueche_Go_Licht.sendCommand(OFF)
+        timerKueche = null
+    ]
+    
+end
+
+rule "Bewegung Wohnzimmer ON"
+when
+    Item WZ_Bewegungsmelder_Bewegung changed to ON
+then
+    if(timerWZ === null && Kueche_Bewegungsmelder_Helligkeit.state < helligkeitsSchwelle && WZ_Lampen.state == 0){
+        WZ_Decke_Licht.sendCommand(ON)
+        ruleTriggered = true
+    }
+    else{
+        timerWZ.cancel
+    }
+end
+
+rule "Bewegung Wohnzimmer OFF"
+when
+    Item WZ_Bewegungsmelder_Bewegung changed to OFF
+then
+    if(ruleTriggered){
+        timerWZ = createTimer(now.plusMinutes(2)) [|
+            WZ_Decke_Licht.sendCommand(OFF)
+           timerWZ = null
+        ]
+    }
+    
+end
+
+
+
+rule "Trigger Night"
+when
+    Time cron "0 0 22 1/1 * ? *"
+then
+    isNight = true
+end
+
+rule "Trigger Night"
+when
+    Time cron "0 0 13 1/1 * ? *"
+then
+    isNight = false
 end

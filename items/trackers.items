@@ -1,0 +1,2 @@
+Number Tim_Phone_Distance {channel="gpstracker:tracker:ne:distanceSystem"}
+Number Tim_Phone_Arbeit_Distance {channel="gpstracker:tracker:ne:distanceArbeit"}

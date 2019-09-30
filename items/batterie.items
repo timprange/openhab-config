@@ -14,9 +14,10 @@ Number WZ_Multisensor_Batterie "Raumsensor Wohnzimmer Batterie" <battery> (Batte
 Number Tim_Multisensor_Batterie "Raumsensor Tim Batterie" <battery> (Batterie) {channel="zwave:device:7d97f490:node13:battery-level"}
 Number Flur_Bewegungsmelder_Batterie "Bewegungsmelder Flur Batterie" <battery> (Batterie) {channel="hue:0107:0017882a3d69:5:battery_level"}
 Number WZ_Bewegungsmelder_Batterie "Bewegungsmelder Wohnzimmer Batterie" <battery> (Batterie) {channel="hue:0107:0017882a3d69:9:battery_level"}
+Number Kueche_Bewegungsmelder_Batterie "Bewegungsmelder Küche Batterie" <battery> (Batterie) {channel="hue:0107:001788a0700f:6:battery_level"}
 //Fernbedienungen
 Number WZ_Decke_Schalter_Batterie "Fernbedienung Wohnzimmer Deckenlicht Batterie" <battery> (Batterie) {channel="hue:0820:0017882a3d69:2:battery_level"}
-Number Tim_Schalter_Batterie "Fernbedienung Tim Batterie" <battery> (Batterie) {channel="hue:0820:0017882a3d69:12:battery_level"}
+Number Tim_Schalter_Batterie "Fernbedienung Tim Batterie" <battery> (Batterie) {channel="hue:0820:001788a0700f:2:battery_level"}
 //Sonstiges
 Number WZ_Sauger_Batterie "Staubsauger Batterie" <battery> (Batterie) {channel="miio:vacuum:046C68ED:status#battery" }
 

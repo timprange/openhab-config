@@ -3,5 +3,7 @@ Number Bad_Waschmaschine_Steckdose_Power "Waschmaschine" <washingmachine> (Bad, 
 Number Bad_Waschmaschine_Status "Waschmaschine [MAP(waschmaschine_state.map):%s]" <washingmachine> (Bad)
 //Sven
 Switch Sven_Steckdose "Sven Schreibtisch Steckdose" <poweroutlet> (Sven, Steckdosen) [ "Switchable" ] {channel="hue:0010:0017882a3d69:6:switch"}
+//Tim
+Switch Tim_Fernseher_Steckdose "Tim Fernseher Steckdose" <screen> (Tim) [ "Switchable" ] {channel="hue:0010:001788a0700f:12:switch"}
 
 Group Steckdosen

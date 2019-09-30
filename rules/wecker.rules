@@ -1,47 +1,31 @@
-import org.eclipse.xtext.xbase.lib.Functions
+var Timer timerAlarm = null
 
-val Functions$Function1 <String,Boolean> wakePerson = [person |
-
-val wecker = Wecker.members.findFirst[w | w.name == person+"_Wecker"] as GroupItem
-val isActive = wecker.members.findFirst[a | a.name == wecker.name+"_Aktiv"]
-
-//Functionbody
-if(  isActive.state == OFF || isActive.state == NULL){
-    
-    sendCommand(isActive, ON)
-    val lights = wecker.members.findFirst[l | l.name == wecker.name+"_Lampen"]
-   
-    var lightColor = wecker.members.findFirst[l | l.name == wecker.name+"_Farbtemperatur"]
-    
-	var Dimmer=1
-	val maxStufe = 25
-    val durationWecker = 1200000 //20 Minuten
-	val heizungBefore = Bad_Heizung_Soll_Proxy.state as Number
-	if(Bad_Heizung_Mode_General == 1){
-		Bad_Heizung_Soll_Proxy.sendCommand(21)
-	}
-	while(Dimmer<=maxStufe)
-	{
-    	sendCommand(lights, Dimmer++)
-		sendCommand(lightColor,50-Dimmer)
-       	Thread::sleep(Math::round(durationWecker/maxStufe))
-	}
-	sendNotification("tim.prange@hotmail.de", "Aufstehen! Der Wecker klingelt!")
-	if(Bad_Heizung_Mode_General == 1){
-	Bad_Heizung_Soll_Proxy.sendCommand(heizungBefore)
-	}
-    	sendCommand(isActive, OFF)
-}
-false
-]
-
-
-rule "Wecker Tim"
+rule "Alarm Clock"
 when
-    Item Tim_Wecker_Switch changed to ON
+    Item Tim_Wecker_Timestamp changed
 then
-	Tim_Wecker_Switch.postUpdate(OFF)
-    wakePerson.apply("Tim")
-    //Switch case über Person, die den Wecker ausgelöst hat. Dann ENtsprechenden Functionscall wakePerson.apply(tim.prange@hotmail.de, Tim_Wecker_Lampen)
-    
+    if (Tim_Wecker_Timestamp.state as Number == 0) {
+        if (timerAlarm !== null) {
+            timerAlarm.cancel
+            timerAlarm = null
+        }
+        logInfo("alarm", "All alarms are cancelled")
+    } else {
+        var epoch = new DateTime((Tim_Wecker_Timestamp.state as Number).longValue)
+        logInfo("alarm", "Scheduling alarm for " +  epoch.toString)
+
+        if (timerAlarm !== null) {
+            logInfo("alarm", "Reschedule alarm")
+            timerAlarm.reschedule(epoch)
+        } else {
+            logInfo("alarm", "New Alarm")
+            timerAlarm = createTimer(epoch,
+                [|
+                    // Turn on stuff, e.g. radio or light
+                    Bad_Heizung_Soll_Proxy.sendCommand(23);
+                    logInfo("alarm", "alarm is expired")
+                ]
+            )
+        }
+    }
 end

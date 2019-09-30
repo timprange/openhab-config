@@ -23,7 +23,11 @@ then
         case SWITCH_ON_PRESSED: {
            WZ_Decke_Licht.sendCommand(ON)
         }
+        case SWITCH_OFF_HOLD,
         case SWITCH_OFF_PRESSED: {
+            if(WZ_Decke_Licht.state as Number == 0){
+                WZ_Lampen.sendCommand(OFF)
+            }
             WZ_Decke_Licht.sendCommand(OFF)
         }
         case SWITCH_UP_HOLD,
@@ -33,6 +37,33 @@ then
         case SWITCH_DOWN_HOLD,
         case SWITCH_DOWN_PRESSED: {
             WZ_Decke_Licht.sendCommand((WZ_Decke_Licht.state as Number) -10)
+        }
+    }
+
+end
+
+rule "Tim Fernbedienung"
+when
+    Channel "hue:0820:001788a0700f:2:dimmer_switch_event" triggered
+then
+    switch(receivedEvent.getEvent){
+        case SWITCH_ON_PRESSED: {
+           Tim_Lampen.sendCommand(ON)
+        }
+        case SWITCH_OFF_HOLD,
+        case SWITCH_OFF_PRESSED: {
+            Tim_Lampen.sendCommand(OFF)
+        }
+        case SWITCH_UP_HOLD,
+        case SWITCH_UP_PRESSED: {
+            Tim_Lampen.sendCommand((Tim_Lampen.state as Number) +10)
+        }
+        case SWITCH_DOWN_HOLD,
+        case SWITCH_DOWN_PRESSED: {
+            if(Tim_Lampen.state == OFF){
+                Tim_Fernseher_Steckdose.send(if(Tim_Fernseher_Steckdose.state==OFF){ON} else{OFF})
+            }
+            Tim_Lampen.sendCommand((Tim_Lampen.state as Number) -10)
         }
     }
 

@@ -1,0 +1,20 @@
+
+var Timer timer = null
+
+rule "Anwesenheit ON"
+when 
+    Item Anwesenheit changed to ON
+then
+     if(timer !== null)
+        timer.cancel
+end
+
+rule "Anwesenheit OFF"
+when
+    Item Anwesenheit changed to OFF
+then
+    timer = createTimer(now.plusMinutes(30)) [|
+        Heizung_Soll_Proxy.postUpdate(18)
+        timer = null
+    ]
+end
