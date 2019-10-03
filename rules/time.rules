@@ -2,7 +2,7 @@ import org.openhab.core.library.types.*
 import org.joda.time.*
 import org.eclipse.xtext.xbase.lib.*
 
-val Functions$Function3 updateTimeOfDay = [String tod, String ptod, boolean update |
+val Functions$Function3 updateTimeOfDay = [String tod, String ptod, Boolean update |
         logInfo("Weather", "Setting PreviousTimeOfDay to \"" + ptod + "\" and TimeOfDay to \"" + tod + "\"")
         if(update) {
                 TimeOfDay.postUpdate(tod)

@@ -28,5 +28,6 @@ Group Kueche_Bewegungsmelder "Küche Bewegungsmelder" (all)
 //-------------------------SCHALTER---------------------//
 Number WZ_Decke_Schalter "Deckenlichtschalter" {channel="hue:0820:0017882a3d69:2:dimmer_switch"}
 Number Tim_Schalter "Tim Lichtschalter" {channel="hue:0820:001788a0700f:2:dimmer_switch"}
+Number Kueche_Schalter "Küche Lichtschalter" {channel="hue:0820:001788a0700f:9:dimmer_switch"}
 
 Group Controll "Verwaltung" <settings>

@@ -63,6 +63,7 @@ Group:Dimmer:AVG Flur_Lampen "Flur Lampen" <light> (Flur, Lampen)
 Dimmer Kueche_Go_Licht "Küchenlicht" (Kueche_Lampen) [ "Lighting" ] {channel="hue:0210:001788a0700f:4:color"}
 Dimmer Kueche_Go_Farbtemperatur "Küchenlicht Farbtemperatur" (Kueche_Farbtemperatur) [ "Lighting" ] {channel="hue:0210:001788a0700f:4:color_temperature"}
 Color Kueche_Go_Farbe "Küchenlicht Farbe" (Kueche_Farbe) {channel="hue:0210:001788a0700f:4:color"}
+Dimmer Kueche_Esstisch "Küche Esstisch" (Kueche_Lampen) ["Lighting"] {channel="hue:0100:001788a0700f:13:brightness"}
 Group Kueche_Farbe "Küche Farbe" <colorpicker> (Kueche, Lampen_Farbe)
 Group Kueche_Farbtemperatur "Küche Farbtemperatur" <colorpicker> (Kueche, Lampen_Farbtemperatur)
 Group:Dimmer:AVG Kueche_Lampen "Küche Lampen" <light> (Kueche, Lampen)

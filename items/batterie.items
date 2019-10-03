@@ -18,7 +18,8 @@ Number Kueche_Bewegungsmelder_Batterie "Bewegungsmelder Küche Batterie" <batter
 //Fernbedienungen
 Number WZ_Decke_Schalter_Batterie "Fernbedienung Wohnzimmer Deckenlicht Batterie" <battery> (Batterie) {channel="hue:0820:0017882a3d69:2:battery_level"}
 Number Tim_Schalter_Batterie "Fernbedienung Tim Batterie" <battery> (Batterie) {channel="hue:0820:001788a0700f:2:battery_level"}
+Number Kueche_Schalter_Batterie "Fernbedienung Küche Batterie" <battery> (Batterie) {channel="hue:0820:001788a0700f:9:battery_level"}
 //Sonstiges
-Number WZ_Sauger_Batterie "Staubsauger Batterie" <battery> (Batterie) {channel="miio:vacuum:046C68ED:status#battery" }
+Number WZ_Sauger_Batterie "Staubsauger Batterie" <battery> (Batterie) {channel="miio:vacuum:046C68ED:status#battery"}
 
 Group:Number:MIN Batterie "Batterieladung [Min. %s %%]" <battery> (all)
