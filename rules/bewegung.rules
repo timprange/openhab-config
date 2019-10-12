@@ -88,6 +88,13 @@ then
     
 end
 
+rule "WZ Fernbedienung"
+when
+    Channel "hue:0820:0017882a3d69:2:dimmer_switch_event" triggered
+then
+    ruleTriggered = false
+end
+
 
 
 rule "Trigger Night"
