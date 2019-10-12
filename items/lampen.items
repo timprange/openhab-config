@@ -22,10 +22,10 @@ Group:Dimmer:AVG Tim_Farbtemperatur "Tim Farbptemeratur" <colorpicker> (Tim, Lam
 Group:Dimmer:AVG  Tim_Wecker_Lampen "Tim Wecker" (Tim_Wecker)
 Group Tim_Wecker_Farbtemperatur "Tim Wecker Farbtemperatur" (Tim_Wecker)
 //-----------WOHNZIMMER--------------
-//Schreibtisch-Lichtband
-Dimmer WZ_Schreibtisch_Lichtstreifen_Licht "Schreibtisch Lichtband Wohnzimmer" (WZ_Lampen) [ "Lighting" ] {channel="yeelight:stripe:0x00000000031a9e14:color"}
-Color  WZ_Schreibtisch_Lichtsteifen_Farbe "Schreibtisch Lichtband Wohnzimmer" <colorpicker> (WZ_Farbe) [ "Lighting" ] {channel="yeelight:stripe:0x00000000031a9e14:color"}
-Dimmer WZ_Schreibtisch_Lichtstreifen_Farbtemperatur "Schreibtisch Lichtband Farbtemperatur Wohnzimmer" <colorpicker> (WZ_Farbtemperatur) {channel="yeelight:stripe:0x00000000031a9e14:colorTemperature"}
+//Fernseher-Lichtband
+Dimmer WZ_Fernseher_Lichtstreifen_Licht "Fernseher Lichtband Wohnzimmer" (WZ_Lampen) [ "Lighting" ] {channel="yeelight:stripe:0x00000000031a9e14:color"}
+Color  WZ_Fernseher_Lichtsteifen_Farbe "Fernseher Lichtband Wohnzimmer" <colorpicker> (WZ_Farbe) [ "Lighting" ] {channel="yeelight:stripe:0x00000000031a9e14:color"}
+Dimmer WZ_Fernseher_Lichtstreifen_Farbtemperatur "Fernseher Lichtband Farbtemperatur Wohnzimmer" <colorpicker> (WZ_Farbtemperatur) {channel="yeelight:stripe:0x00000000031a9e14:colorTemperature"}
 //Sofa-Regal-Lichtband
 Dimmer WZ_Sofaregal_Lichtstreifen_Licht "Sofaregal Lichtband Wohnzimmer" (WZ_Lampen) [ "Lighting" ] {channel="yeelight:stripe:0x00000000036d0b81:color"}
 Color WZ_Sofaregal_Lichtstreifen_Farbe "Sofaregal Lichtband Wohnzimmer" <colorpicker> (WZ_Farbe) [ "Lighting" ] {channel="yeelight:stripe:0x00000000036d0b81:color"}
