@@ -35,8 +35,8 @@ Dimmer WZ_Decke_1_Licht "Deckenleuchte 1" (WZ_Decke_Licht) {channel="hue:0100:00
 Dimmer WZ_Decke_2_Licht "Deckenleuchte 2" (WZ_Decke_Licht) {channel="hue:0100:0017882a3d69:5:brightness"}
 Group:Dimmer WZ_Decke_Licht "Deckenlicht Wohnzimmer" <light> (WZ_Lampen) [ "Lighting" ]
 //Schreibtischlampe
-Dimmer WZ_Schreibtisch_Schreibtischlampe_Licht "Schreibtischlampe Wohnzimmer" (WZ_Lampen) [ "Lighting" ] {channel="hue:0220:0017882a3d69:8:brightness"}
-Dimmer WZ_Schreibtisch_Schreibtischlampe_Licht_Farbtemperatur "Schreibtischlampe Farbtemperatur Wohnzimmer" <colorpicker> (WZ_Farbtemperatur) {channel="hue:0220:0017882a3d69:8:color_temperature"}
+Dimmer WZ_Schreibtisch_Schreibtischlampe_Licht "Schreibtischlampe Wohnzimmer" (WZ_Lampen) [ "Lighting" ] {channel="hue:0220:0017882a3d69:25:brightness"}
+Dimmer WZ_Schreibtisch_Schreibtischlampe_Licht_Farbtemperatur "Schreibtischlampe Farbtemperatur Wohnzimmer" <colorpicker> (WZ_Farbtemperatur) {channel="hue:0220:0017882a3d69:25:color_temperature"}
 //Stehlampe
 Dimmer WZ_Stehlampe_1_Licht "Stehlampe 1" (WZ_Stehlampe_Licht) {channel="hue:0210:0017882a3d69:23:color"}
 Dimmer WZ_Stehlampe_1_Licht_Farbtemperatur "Stehlampe 1" (WZ_Stehlampe_Farbtemperatur) {channel="hue:0210:0017882a3d69:23:color_temperature"}
