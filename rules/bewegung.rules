@@ -10,8 +10,6 @@ var Timer timerKueche = null
 
 var Timer timerWZ = null
 
-var ruleTriggered = false
-
 rule "Bewegung Flur ON"
 when
     Item Flur_Bewegungsmelder_Bewegung changed to ON
@@ -23,7 +21,6 @@ then
         timer.cancel
     }
 end
-
 
 rule "Bewegung Flur OFF"
 when
@@ -49,7 +46,6 @@ then
     }
 end
 
-
 rule "Bewegung Kueche OFF"
 when
     Item Kueche_Bewegungsmelder_Bewegung changed to OFF
@@ -68,7 +64,7 @@ when
 then
     if(timerWZ === null && Kueche_Bewegungsmelder_Helligkeit.state < helligkeitsSchwelle && WZ_Lampen.state == 0){
         WZ_Decke_Licht.sendCommand(ON)
-        ruleTriggered = true
+        WZ_Lampen_Rule_Triggered.send(ON)
     }
     else{
         timerWZ.cancel
@@ -79,7 +75,7 @@ rule "Bewegung Wohnzimmer OFF"
 when
     Item WZ_Bewegungsmelder_Bewegung changed to OFF
 then
-    if(ruleTriggered){
+    if(WZ_Lampen_Rule_Triggered.state == ON){
         timerWZ = createTimer(now.plusMinutes(2)) [|
             WZ_Decke_Licht.sendCommand(OFF)
            timerWZ = null
@@ -87,15 +83,6 @@ then
     }
     
 end
-
-rule "WZ Fernbedienung"
-when
-    Channel "hue:0820:0017882a3d69:2:dimmer_switch_event" triggered
-then
-    ruleTriggered = false
-end
-
-
 
 rule "Trigger Night"
 when

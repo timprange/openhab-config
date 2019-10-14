@@ -19,6 +19,7 @@ rule "WZ Fernbedienung"
 when
     Channel "hue:0820:0017882a3d69:2:dimmer_switch_event" triggered
 then
+    WZ_Lampen_Rule_Triggered.send(OFF)
     switch(receivedEvent.getEvent){
         case SWITCH_ON_PRESSED: {
            WZ_Decke_Licht.sendCommand(ON)
