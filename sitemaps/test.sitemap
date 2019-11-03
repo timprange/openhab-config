@@ -3,6 +3,7 @@ sitemap test label="Test" {
         Text item=Anwesenheit label="Anwesenheit [%s]"
         Text item=Tim_Phone_Distance label="Entfernung Tim nach Hause [%.2f km]"
         Text item=Tim_Phone_Arbeit_Distance label="Entfernung Tim zur Arbeit [%.2f km]"
+        Default item=Tim_Wecker_Aktiv
     }
 
 }

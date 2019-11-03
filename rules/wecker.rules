@@ -1,46 +1,41 @@
 var Timer timerAlarm = null
 val durationWecker = 1200000 //20 Minuten
 
-val Functions$Function1 <String,Boolean> wakePerson = [person |
+var Timer wakeUpTimer = null
+var Dimmer = 1
 
-    val wecker = Wecker.members.findFirst[w | w.name == person+"_Wecker"] as GroupItem
-    val isActive = wecker.members.findFirst[a | a.name == wecker.name+"_Aktiv"]
-
-    //Functionbody
-
-    sendCommand(isActive, ON)
-    val lights = wecker.members.findFirst[l | l.name == wecker.name+"_Lampen"]
-
-    var lightColor = wecker.members.findFirst[l | l.name == wecker.name+"_Farbtemperatur"]
+rule "Alarm Clock Tim"
+when
+    Item Tim_Wecker_Aktiv changed to ON
+then
     
-    var Dimmer = 1
     val maxStufe = 25
+    val stepDuration = Math::round(durationWecker/maxStufe)
     
     val heizungBefore = Bad_Heizung_Soll_Proxy.state as Number
+    Bad_Heizung_Soll_Proxy.sendCommand(21)
 
-    if(Bad_Heizung_Mode_General == 1){
-    	Bad_Heizung_Soll_Proxy.sendCommand(21)
-    }
+    wakeUpTimer = createTimer(now.plusMillis(stepDuration), [|
+        sendCommand(Tim_Wecker_Lampen, Dimmer++)
+    	sendCommand(Tim_Wecker_Farbtemperatur,100-(Dimmer*2))
 
-    while(Dimmer<=maxStufe)
-    {
-       	sendCommand(lights, Dimmer++)
-    	sendCommand(lightColor,100-(Dimmer*2))
-        Thread::sleep(Math::round(durationWecker/maxStufe))
-    }
+        if(Dimmer >= maxStufe){ //Dimmer is at Max. Need to get up
+            logInfo("alarm", "Waken Up")
 
-    sendNotification("tim.prange@hotmail.de", "Aufstehen! Der Wecker klingelt!")
-
-    if(Bad_Heizung_Mode_General == 1)
-    {
-        createTimer(now.plusMinutes(15),[|
-            Bad_Heizung_Soll_Proxy.sendCommand(heizungBefore)
-        ])
-    }
-
-    sendCommand(isActive, OFF)
-    false
-]
+            //reset Heating to the temperature before
+               createTimer(now.plusMinutes(15),[|
+                    Bad_Heizung_Soll_Proxy.sendCommand(heizungBefore)
+                ])
+            
+            Dimmer = 1;
+            Tim_Wecker_Aktiv.sendCommand(OFF)
+       }
+       else{ //Dimmer isn't maxed yet. Need to do next iteration
+           logInfo("alarm", "Alarm rescheduled")
+           wakeUpTimer.reschedule(now.plusMillis(stepDuration))
+       }
+    ]) 
+end
 
 rule "Alarm Clock"
 when
@@ -68,7 +63,8 @@ then
                 [|
                     // Turn on stuff, e.g. radio or light
                     logInfo("alarm", "Wecker gestartet")
-                    wakePerson.apply("Tim")
+                    Tim_Wecker_Aktiv.send(ON)
+                    timerAlarm = null
                 ]
             )
         }
